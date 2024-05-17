@@ -3,7 +3,7 @@ import { Navbar } from "../components";
 
 const HomePage = () => {
   return (
-    <div className="py-3 px-[75px]">
+    <div className="py-3 px-[90px] max-w-[1500px] h-[1650px]">
       <Navbar />
     </div>
   );
