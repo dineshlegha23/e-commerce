@@ -5,7 +5,7 @@ import heroBcg2 from "../assets/hero-bcg-2.jpeg";
 
 const Hero = () => {
   return (
-    <div className="flex justify-between items-center py-1">
+    <div className="flex justify-between items-center pt-1 px-[85px]">
       <div className="flex flex-col max-w-[550px] gap-8 px-1 text-black/60 text-[20px] font-normal">
         <h1 className="font-bold text-5xl text-black/90 tracking-wider">
           Design Your <br />

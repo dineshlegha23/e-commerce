@@ -13,7 +13,7 @@ import {
 
 const App = () => {
   return (
-    <div className="max-w-[1500px] px-[85px] h-[1900px]">
+    <div className="max-w-[1500px] h-[1900px]">
       <BrowserRouter>
         <Navbar />
         <Routes>
