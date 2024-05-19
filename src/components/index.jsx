@@ -1,9 +1,9 @@
-// import FeaturedProducts from "./FeaturedProducts";
+import FeaturedProducts from "./FeaturedProducts";
 import Navbar from "./Navbar";
 import CartButtons from "./CartButtons";
 // import Footer from "./Footer";
 // import Sidebar from "./Sidebar";
-// import Hero from "./Hero";
+import Hero from "./Hero";
 // import Services from "./Services";
 // import Contact from "./Contact";
 // import Loading from "./Loading";
@@ -19,12 +19,12 @@ import CartButtons from "./CartButtons";
 // import StripeCheckout from "./StripeCheckout";
 
 export {
-  // FeaturedProducts,
+  FeaturedProducts,
   Navbar,
   CartButtons,
   // Footer,
   // Sidebar,
-  // Hero,
+  Hero,
   // Services,
   // Contact,
   // Loading,

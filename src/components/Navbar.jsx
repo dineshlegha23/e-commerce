@@ -7,9 +7,9 @@ import { CartButtons } from "../components";
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-between">
-      <img src={logo} alt="comfy logo" className="w-44 -ml-4" />
-      <ul className="flex gap-8 py-2 items-center text-lg font-normal">
+    <nav className="flex justify-between p-2">
+      <img src={logo} alt="comfy logo" className="w-44 -ml-[18px]" />
+      <ul className="flex gap-8 py-2 px-3 items-center text-lg font-normal">
         {links.map((link) => (
           <Link to={link.url} key={link.id}>
             <p className="capitalize py-2 border-b-2 border-transparent hover:border-b-2 hover:border-red-300">

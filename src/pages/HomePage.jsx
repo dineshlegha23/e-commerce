@@ -1,10 +1,11 @@
 import React from "react";
-import { Navbar } from "../components";
+import { Hero, FeaturedProducts } from "../components";
 
 const HomePage = () => {
   return (
-    <div className="py-2 px-[90px] max-w-[1500px] h-[1650px]">
-      <Navbar />
+    <div className="">
+      <Hero />
+      <FeaturedProducts />
     </div>
   );
 };
