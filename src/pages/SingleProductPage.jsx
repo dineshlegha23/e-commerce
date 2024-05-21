@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Links from "../components/Links";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { single_product_url } from "../utils/constants";
 import Loading from "../components/Loading";
 import ProductImages from "../components/ProductImages";
@@ -42,10 +42,13 @@ const SingleProductPage = () => {
     <div>
       <Links home={true} products={true} link={product?.name} />
       <div className="px-[90px] mt-[82px] h-screen">
-        <button className="bg-brown text-white/80 tracking-wider px-3 py-1 rounded-md">
+        <Link
+          to={"/products"}
+          className="bg-brown text-white/80 tracking-wider px-3 py-1 rounded-md"
+        >
           BACK TO PRODUCTS
-        </button>
-        <div className="mt-10">
+        </Link>
+        <div className="mt-10 flex gap-10">
           <div className="w-[552px]">
             <img
               className="w-[552px] h-[500px] object-cover rounded-md"
@@ -64,7 +67,11 @@ const SingleProductPage = () => {
               ))}
             </div>
           </div>
-          <div></div>
+          <div>
+            <h1 className="text-5xl text-black/80 font-bold capitalize">
+              {product?.name}
+            </h1>
+          </div>
         </div>
       </div>
     </div>
