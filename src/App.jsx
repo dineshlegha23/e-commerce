@@ -13,15 +13,15 @@ import {
 
 const App = () => {
   return (
-    <div className="max-w-[1500px] h-[1900px]">
+    <div className="max-w-[1500px]">
       <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/:productId" element={<SingleProductPage />} />
+          <Route path="/products" element={<ProductsPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>

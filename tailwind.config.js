@@ -28,6 +28,7 @@ export default {
       },
       colors: {
         gray: "#3E3D40",
+        brown: "#ab7a5f",
       },
     },
   },

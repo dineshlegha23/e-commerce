@@ -1,7 +1,12 @@
 import React from "react";
+import Links from "../components/Links";
 
 const ProductsPage = () => {
-  return <h4>products page</h4>;
+  return (
+    <div>
+      <Links home={true} products={false} />
+    </div>
+  );
 };
 
 export default ProductsPage;

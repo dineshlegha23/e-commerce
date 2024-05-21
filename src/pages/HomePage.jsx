@@ -3,7 +3,7 @@ import { Hero, FeaturedProducts } from "../components";
 
 const HomePage = () => {
   return (
-    <div className="">
+    <div>
       <Hero />
       <FeaturedProducts />
     </div>
