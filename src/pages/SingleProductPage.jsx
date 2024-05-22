@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Links from "../components/Links";
 import { Link, useParams } from "react-router-dom";
 import { single_product_url } from "../utils/constants";
-import Loading from "../components/Loading";
-import ProductImages from "../components/ProductImages";
+import { Loading, ProductImages, Stars } from "../components/";
+import { formatPrice } from "../utils/helpers";
 
 const SingleProductPage = () => {
   const [loading, setLoading] = useState();
@@ -48,14 +48,14 @@ const SingleProductPage = () => {
         >
           BACK TO PRODUCTS
         </Link>
-        <div className="mt-10 flex gap-10">
+        <div className="mt-12 flex gap-16">
           <div className="w-[552px]">
             <img
               className="w-[552px] h-[500px] object-cover rounded-md"
               src={product?.images[currentIndex]?.url}
               alt={`${product?.name}`}
             />
-            <div className="grid grid-cols-5 gap-4 mt-5">
+            <div className="grid grid-cols-5 gap-4 mt-4">
               {product?.images?.map((product, index) => (
                 <ProductImages
                   key={product?.id}
@@ -67,10 +67,14 @@ const SingleProductPage = () => {
               ))}
             </div>
           </div>
-          <div>
-            <h1 className="text-5xl text-black/80 font-bold capitalize">
+          <div className="flex flex-col gap-2">
+            <h1 className="text-[39px] text-black/80 font-bold capitalize -mt-5 tracking-wider">
               {product?.name}
             </h1>
+            <Stars />
+            <p className="text-brown text-xl tracking-widest font-bold">
+              ${formatPrice(product?.price)}
+            </p>
           </div>
         </div>
       </div>
