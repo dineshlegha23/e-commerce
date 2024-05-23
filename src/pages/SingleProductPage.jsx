@@ -11,6 +11,7 @@ const SingleProductPage = () => {
   const [error, setError] = useState();
   const [product, setProduct] = useState();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentColor, setCurrentColor] = useState();
   const { productId } = useParams();
 
   const fetchData = async () => {
@@ -19,8 +20,9 @@ const SingleProductPage = () => {
       const response = await fetch(`${single_product_url}${productId}`);
       const data = await response.json();
       setProduct(data);
-      console.log(data);
       setLoading(false);
+      setCurrentColor(data.colors[0]);
+      console.log(data);
     } catch (error) {
       setLoading(false);
       setError(true);
@@ -103,10 +105,20 @@ const SingleProductPage = () => {
             <div className="flex justify-between w-[255px] mt-6">
               <p className="font-bold text-black/70 w-full">Colors:</p>
               <div className="flex gap-2 w-full text-left">
-                <div className="w-6 h-6 bg-red-400 rounded-full">
-                  <TiTick color="white" size={24} />
-                </div>
-                <div className="w-6 h-6 bg-red-400 rounded-full opacity-40"></div>
+                {product?.colors.map((color) => (
+                  <div
+                    key={color}
+                    onClick={() => setCurrentColor(color)}
+                    style={{ backgroundColor: color }}
+                    className={`w-6 h-6  rounded-full cursor-pointer grid content-center justify-center ${
+                      currentColor === color ? "opacity-100" : "opacity-50"
+                    }`}
+                  >
+                    {currentColor === color && (
+                      <TiTick color="white" size={20} />
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
