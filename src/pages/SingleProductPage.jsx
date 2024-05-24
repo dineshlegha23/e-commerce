@@ -5,13 +5,15 @@ import { single_product_url } from "../utils/constants";
 import { Loading, ProductImages, Stars } from "../components/";
 import { formatPrice } from "../utils/helpers";
 import { TiTick } from "react-icons/ti";
+import AddToCart from "../components/AddToCart";
 
 const SingleProductPage = () => {
   const [loading, setLoading] = useState();
   const [error, setError] = useState();
   const [product, setProduct] = useState();
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentColor, setCurrentColor] = useState();
+  const [amount, setAmount] = useState(1);
   const { productId } = useParams();
 
   const fetchData = async () => {
@@ -55,7 +57,7 @@ const SingleProductPage = () => {
           <div className="w-[552px]">
             <img
               className="w-[552px] h-[500px] object-cover rounded-md"
-              src={product?.images[currentIndex]?.url}
+              src={product?.images[currentImageIndex]?.url}
               alt={`${product?.name}`}
             />
             <div className="grid grid-cols-5 gap-4 mt-4">
@@ -64,8 +66,8 @@ const SingleProductPage = () => {
                   key={product?.id}
                   image={product?.url}
                   index={index}
-                  currentIndex={currentIndex}
-                  setCurrentIndex={setCurrentIndex}
+                  currentImageIndex={currentImageIndex}
+                  setCurrentImageIndex={setCurrentImageIndex}
                 />
               ))}
             </div>
@@ -121,6 +123,11 @@ const SingleProductPage = () => {
                 ))}
               </div>
             </div>
+            <AddToCart
+              amount={amount}
+              setAmount={setAmount}
+              stock={product?.stock}
+            />
           </div>
         </div>
       </div>

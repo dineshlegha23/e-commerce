@@ -9,7 +9,7 @@ import Hero from "./Hero";
 import Loading from "./Loading";
 // import Error from "./Error";
 import ProductImages from "./ProductImages";
-// import AddToCart from "./AddToCart";
+import AddToCart from "./AddToCart";
 // import Filters from "./Filters";
 // import ProductList from "./ProductList";
 // import Sort from "./Sort";
@@ -30,7 +30,7 @@ export {
   Loading,
   // Error,
   ProductImages,
-  // AddToCart,
+  AddToCart,
   // Filters,
   // ProductList,
   // Sort,

@@ -4,15 +4,15 @@ const ProductImages = ({
   name,
   image,
   index,
-  currentIndex,
-  setCurrentIndex,
+  currentImageIndex,
+  setCurrentImageIndex,
 }) => {
   return (
     <div>
       <img
-        onClick={() => setCurrentIndex(index)}
+        onClick={() => setCurrentImageIndex(index)}
         className={`cursor-pointer w-[100px] h-[75px] rounded-md object-cover ${
-          index === currentIndex ? "border-[3px] border-brown" : ""
+          index === currentImageIndex ? "border-[3px] border-brown" : ""
         }`}
         src={image}
         alt={name}
