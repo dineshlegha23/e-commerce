@@ -34,7 +34,6 @@ const FeaturedProducts = () => {
     return <Error />;
   }
 
-  console.log(products);
   return (
     <section className="h-screen bg-[#f1f5f8] px-[85px]">
       <div className="flex flex-col gap-16 justify-center items-center h-full">

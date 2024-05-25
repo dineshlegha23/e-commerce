@@ -10,15 +10,17 @@ const Links = ({ home, products, link }) => {
             Home /
           </Link>
         )}
-        {products ? (
+        {products == "visible" ? (
+          " Products /"
+        ) : products === true ? (
           <Link to={"/products"} className="hover:text-black/70">
             {" "}
             Products /{" "}
           </Link>
         ) : (
-          " Products /"
+          " "
         )}
-        {link && <span className="text-black/80 capitalize">{link}</span>}
+        {link && <span className="text-black/80 capitalize"> {link}</span>}
       </div>
     </div>
   );

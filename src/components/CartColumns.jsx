@@ -1,7 +1,18 @@
 import React from "react";
 
 const CartColumns = () => {
-  return <h4>cart columns</h4>;
+  return (
+    <>
+      <div className="grid grid-cols-[316px_1fr_1fr_1fr_auto] justify-items-center text-black/50 font-medium tracking-widest">
+        <div>Item</div>
+        <div>Price</div>
+        <div>Quantity</div>
+        <div>Subtotal</div>
+        <div className="w-6"></div>
+      </div>
+      <hr className="mt-6 mb-11 text-black/20" />
+    </>
+  );
 };
 
 // const Wrapper = styled.div`

@@ -1,20 +1,29 @@
 import React from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
-const AmountButtons = ({ amount, setAmount, stock }) => {
+const AmountButtons = ({ id, amount, setAmount, stock, dispatch }) => {
   const descreaseAmount = () => {
+    console.log("decrease");
     if (amount === 1) {
       return;
     } else {
+      if (dispatch) {
+        dispatch(setAmount({ type: "decrease", payload: id }));
+      }
       setAmount((prevAmount) => prevAmount - 1);
     }
   };
 
   const increaseAmount = () => {
+    console.log("increase");
     if (amount === stock) {
       return;
     } else {
-      setAmount((prevAmount) => prevAmount + 1);
+      if (dispatch) {
+        dispatch(setAmount({ type: "increase", payload: id }));
+      } else {
+        setAmount((prevAmount) => prevAmount + 1);
+      }
     }
   };
 

@@ -3,9 +3,32 @@ import { Link } from "react-router-dom";
 import CartColumns from "./CartColumns";
 import CartItem from "./CartItem";
 import CartTotals from "./CartTotals";
+import { useSelector } from "react-redux";
 
 const CartContent = () => {
-  return <h4>cart content </h4>;
+  const { cartItems } = useSelector((store) => store.cart);
+  console.log(cartItems);
+  return (
+    <section className="px-[85px] py-20 h-[1000px]">
+      <CartColumns />
+      <div className="flex flex-col gap-12">
+        {cartItems.map((item) => (
+          <CartItem
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            image={item.image}
+            amount={item.amount}
+            price={item.price}
+            subtotal={item.subTotal}
+            color={item.color}
+            stock={item.stock}
+          />
+        ))}
+      </div>
+      <CartTotals />
+    </section>
+  );
 };
 
 // const Wrapper = styled.section`
