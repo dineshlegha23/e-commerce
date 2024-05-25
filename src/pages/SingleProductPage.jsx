@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import Links from "../components/Links";
 import { Link, useParams } from "react-router-dom";
 import { single_product_url } from "../utils/constants";
-import { Loading, ProductImages, Stars } from "../components/";
+import { Loading, ProductImages, Stars, AddToCart } from "../components/";
 import { formatPrice } from "../utils/helpers";
 import { TiTick } from "react-icons/ti";
-import AddToCart from "../components/AddToCart";
 
 const SingleProductPage = () => {
   const [loading, setLoading] = useState();
@@ -127,6 +126,10 @@ const SingleProductPage = () => {
               amount={amount}
               setAmount={setAmount}
               stock={product?.stock}
+              image={product?.images[currentImageIndex]?.url}
+              id={product?.id}
+              color={currentColor}
+              price={formatPrice(product?.price)}
             />
           </div>
         </div>
