@@ -3,15 +3,20 @@ import { Link } from "react-router-dom";
 import CartColumns from "./CartColumns";
 import CartItem from "./CartItem";
 import CartTotals from "./CartTotals";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../store/cartSlice";
 
 const CartContent = () => {
   const { cartItems } = useSelector((store) => store.cart);
-  console.log(cartItems);
+  const dispatch = useDispatch();
+  const subtotal = cartItems.reduce((acc, curr) => {
+    return acc + curr.subTotal * curr.amount;
+  }, 0);
+
   return (
     <section className="px-[85px] py-20 h-[1000px]">
       <CartColumns />
-      <div className="flex flex-col gap-12">
+      <div className="flex flex-col gap-12 pb-10 border-b-[1px] border-black/20">
         {cartItems.map((item) => (
           <CartItem
             key={item.id}
@@ -26,32 +31,23 @@ const CartContent = () => {
           />
         ))}
       </div>
-      <CartTotals />
+      <div className="my-14 flex justify-between">
+        <Link
+          to={"/products"}
+          className="bg-brown text-white py-2 px-3 tracking-wider rounded-md"
+        >
+          Continue Shopping
+        </Link>
+        <button
+          onClick={() => dispatch(clearCart())}
+          className="bg-black/80 text-white px-3 tracking-wider rounded-md"
+        >
+          Clear Shopping Cart
+        </button>
+      </div>
+      <CartTotals subtotal={subtotal} />
     </section>
   );
 };
-
-// const Wrapper = styled.section`
-//   .link-container {
-//     display: flex;
-//     justify-content: space-between;
-//     margin-top: 2rem;
-//   }
-//   .link-btn {
-//     background: transparent;
-//     border-color: transparent;
-//     text-transform: capitalize;
-//     padding: 0.25rem 0.5rem;
-//     background: var(--clr-primary-5);
-//     color: var(--clr-white);
-//     border-radius: var(--radius);
-//     letter-spacing: var(--spacing);
-//     font-weight: 400;
-//     cursor: pointer;
-//   }
-//   .clear-btn {
-//     background: var(--clr-black);
-//   }
-// `;
 
 export default CartContent;

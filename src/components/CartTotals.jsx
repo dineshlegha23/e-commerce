@@ -2,40 +2,34 @@ import React from "react";
 import { formatPrice } from "../utils/helpers";
 import { Link } from "react-router-dom";
 
-const CartTotals = () => {
-  return <h4>cart totals</h4>;
+const CartTotals = ({ subtotal, shipping = 5.34 }) => {
+  return (
+    <section>
+      <div className="flex justify-between">
+        <div></div>
+        <div className="flex flex-col gap-5">
+          <div className="border-[1px] border-black/20 rounded-md flex flex-col gap-3 px-10 py-5 w-[380px]">
+            <div className="flex justify-between text-md tracking-wider font-semibold">
+              <p>Subtotal :</p>
+              <p>$ {subtotal}</p>
+            </div>
+            <div className="flex justify-between text-black/60 font-semibold">
+              <p>Shipping Fee :</p>
+              <p>$ {shipping}</p>
+            </div>
+            <hr className="text-black/20 mt-2 mb-5" />
+            <div className="flex justify-between text-2xl font-bold">
+              <h2 className="">Order Total :</h2>
+              <span>$ {subtotal + shipping}</span>
+            </div>
+          </div>
+          <button className="bg-brown text-white/80 tracking-widest py-1 rounded-md">
+            LOGIN
+          </button>
+        </div>
+      </div>
+    </section>
+  );
 };
-
-// const Wrapper = styled.section`
-//   margin-top: 3rem;
-//   display: flex;
-//   justify-content: center;
-//   article {
-//     border: 1px solid var(--clr-grey-8);
-//     border-radius: var(--radius);
-//     padding: 1.5rem 3rem;
-//   }
-//   h4,
-//   h5,
-//   p {
-//     display: grid;
-//     grid-template-columns: 200px 1fr;
-//   }
-//   p {
-//     text-transform: capitalize;
-//   }
-//   h4 {
-//     margin-top: 2rem;
-//   }
-//   @media (min-width: 776px) {
-//     justify-content: flex-end;
-//   }
-//   .btn {
-//     width: 100%;
-//     margin-top: 1rem;
-//     text-align: center;
-//     font-weight: 700;
-//   }
-// `
 
 export default CartTotals;
