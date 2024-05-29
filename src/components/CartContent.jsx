@@ -10,7 +10,7 @@ const CartContent = () => {
   const { cartItems } = useSelector((store) => store.cart);
   const dispatch = useDispatch();
   const subtotal = cartItems.reduce((acc, curr) => {
-    return acc + curr.subTotal * curr.amount;
+    return acc + curr.price * curr.amount;
   }, 0);
 
   return (
@@ -25,7 +25,6 @@ const CartContent = () => {
             image={item.image}
             amount={item.amount}
             price={item.price}
-            subtotal={item.subTotal}
             color={item.color}
             stock={item.stock}
           />

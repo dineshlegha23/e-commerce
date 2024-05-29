@@ -4,16 +4,7 @@ import { useDispatch } from "react-redux";
 import { setCartAmount } from "../store/cartSlice";
 import { removeFromCart } from "../store/cartSlice";
 
-const CartItem = ({
-  id,
-  image,
-  name,
-  price,
-  amount,
-  subtotal,
-  color,
-  stock,
-}) => {
+const CartItem = ({ id, image, name, price, amount, color, stock }) => {
   const dispatch = useDispatch();
 
   return (
@@ -39,7 +30,7 @@ const CartItem = ({
         dispatch={dispatch}
         id={id}
       />
-      <p className="text-black/50 font-semibold">${subtotal}</p>
+      <p className="text-black/50 font-semibold">${price * amount}</p>
       <FaTrash
         onClick={() => dispatch(removeFromCart({ id }))}
         color="white"
