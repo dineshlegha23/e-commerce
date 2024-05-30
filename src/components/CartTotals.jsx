@@ -3,6 +3,8 @@ import { fixedPrice, formatPrice } from "../utils/helpers";
 import { Link } from "react-router-dom";
 
 const CartTotals = ({ subtotal, shipping = 5.34 }) => {
+  let total = (subtotal + shipping).toLocaleString();
+
   return (
     <section>
       <div className="flex justify-between">
@@ -20,7 +22,7 @@ const CartTotals = ({ subtotal, shipping = 5.34 }) => {
             <hr className="text-black/20 mt-2 mb-5" />
             <div className="flex justify-between text-2xl font-bold">
               <h2 className="">Order Total :</h2>
-              <span>$ {fixedPrice(subtotal + shipping)}</span>
+              <span>$ {total}</span>
             </div>
           </div>
           <button className="bg-brown text-white/80 tracking-widest py-1 rounded-md">

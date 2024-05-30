@@ -44,7 +44,7 @@ const SingleProductPage = () => {
 
   return (
     <div>
-      <Links home={true} products={"visible"} link={product?.name} />
+      <Links home={true} products={true} link={product?.name} />
       <div className="px-[90px] mt-[82px] h-screen">
         <Link
           to={"/products"}

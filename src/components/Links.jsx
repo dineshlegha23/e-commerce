@@ -11,7 +11,7 @@ const Links = ({ home, products, link }) => {
           </Link>
         )}
         {products == "visible" ? (
-          " Products /"
+          <span className="text-black/80"> Products /</span>
         ) : products === true ? (
           <Link to={"/products"} className="hover:text-black/70">
             {" "}
