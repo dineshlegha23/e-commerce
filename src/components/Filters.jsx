@@ -1,111 +1,82 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useFilterContext } from '../context/filter_context'
-import { getUniqueValues, formatPrice } from '../utils/helpers'
-import { FaCheck } from 'react-icons/fa'
+import React from "react";
+import { getUniqueValues, formatPrice } from "../utils/helpers";
+import { FaCheck } from "react-icons/fa";
 
-const Filters = () => {
-  return <h4>filters</h4>
-}
+const Filters = ({ categories, companies, colors }) => {
+  return (
+    <article className="w-[234px] px-1 mx-auto h-fit sticky top-3">
+      <div className="flex flex-col gap-[14px] ">
+        <form>
+          <input
+            type="text"
+            className="bg-[#f1f5f9] w-[190px] py-[6px] px-2 rounded-md tracking-wider font-medium placeholder:text-black/50"
+            placeholder="Search"
+          />
+        </form>
+        <div>
+          <h5 className="font-bold  text-black/70 tracking-widest my-1">
+            Category
+          </h5>
+          <ul className="text-[#617d98] text-sm flex flex-col gap-[5px] mt-2 tracking-widest capitalize">
+            <li className="border-b-[1px] pb-[2px] w-fit">All</li>
+            {categories.map((category) => (
+              <li key={category} className="pb-[2px]">
+                {category}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h5 className="font-bold  text-black/70 tracking-widest my-1">
+            Company
+          </h5>
+          <select
+            name="company"
+            id="company"
+            className="bg-[#f1f5f9] rounded-md py-1 px-1 mt-1 text-xs"
+          >
+            <option value="all">all</option>
+            {companies.map((company) => (
+              <option value={company} key={company} className="capitalize">
+                {company}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <h5 className="font-bold  text-black/70 tracking-widest my-1">
+            Colors
+          </h5>
+          <div className="flex gap-2 items-center py-[6px] text-[#617d98] tracking-widest mb-4">
+            <button className="tracking-wider text-sm pb-[2px] border-b-[1px]">
+              All
+            </button>
+            {colors.map((color) => (
+              <button
+                key={color}
+                style={{ backgroundColor: color }}
+                className="w-4 h-4 rounded-full opacity-50"
+              ></button>
+            ))}
+          </div>
+          <div>
+            <h5 className="font-bold  text-black/70 tracking-widest my-1">
+              Price
+            </h5>
+            <p className="mb-1 text-black/70">$3,099.99</p>
+            <input type="range" name="price" id="price" min={0} max={100} />
+          </div>
+        </div>
+        <div className="flex justify-between w-40">
+          <h5 className="text-black/70 my-2">Free Shipping</h5>
+          <input type="checkbox" name="freeShipping" id="freeShipping" />
+        </div>
+      </div>
+      <button className="px-3 text-sm py-1 mt-3 tracking-wider bg-[#bb2525] text-white rounded-md">
+        Clear Filters
+      </button>
+    </article>
+  );
+};
 
-const Wrapper = styled.section`
-  .form-control {
-    margin-bottom: 1.25rem;
-    h5 {
-      margin-bottom: 0.5rem;
-    }
-  }
-  .search-input {
-    padding: 0.5rem;
-    background: var(--clr-grey-10);
-    border-radius: var(--radius);
-    border-color: transparent;
-    letter-spacing: var(--spacing);
-  }
-  .search-input::placeholder {
-    text-transform: capitalize;
-  }
-
-  button {
-    display: block;
-    margin: 0.25em 0;
-    padding: 0.25rem 0;
-    text-transform: capitalize;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid transparent;
-    letter-spacing: var(--spacing);
-    color: var(--clr-grey-5);
-    cursor: pointer;
-  }
-  .active {
-    border-color: var(--clr-grey-5);
-  }
-  .company {
-    background: var(--clr-grey-10);
-    border-radius: var(--radius);
-    border-color: transparent;
-    padding: 0.25rem;
-  }
-  .colors {
-    display: flex;
-    align-items: center;
-  }
-  .color-btn {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    background: #222;
-    margin-right: 0.5rem;
-    border: none;
-    cursor: pointer;
-    opacity: 0.5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    svg {
-      font-size: 0.5rem;
-      color: var(--clr-white);
-    }
-  }
-  .all-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 0.5rem;
-    opacity: 0.5;
-  }
-  .active {
-    opacity: 1;
-  }
-  .all-btn .active {
-    text-decoration: underline;
-  }
-  .price {
-    margin-bottom: 0.25rem;
-  }
-  .shipping {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    text-transform: capitalize;
-    column-gap: 0.5rem;
-    font-size: 1rem;
-    max-width: 200px;
-  }
-  .clear-btn {
-    background: var(--clr-red-dark);
-    color: var(--clr-white);
-    padding: 0.25rem 0.5rem;
-    border-radius: var(--radius);
-  }
-  @media (min-width: 768px) {
-    .content {
-      position: sticky;
-      top: 1rem;
-    }
-  }
-`
-
-export default Filters
+export default Filters;
