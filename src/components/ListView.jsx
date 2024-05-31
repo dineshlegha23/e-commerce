@@ -1,47 +1,45 @@
-import React from 'react'
-import styled from 'styled-components'
-import { formatPrice } from '../utils/helpers'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { formatPrice } from "../utils/helpers";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 const ListView = () => {
-  return <h4>list view</h4>
-}
+  const { allProducts } = useSelector((store) => store.products);
 
-const Wrapper = styled.section`
-  display: grid;
-  row-gap: 3rem;
+  return (
+    <section className="flex flex-col gap-16 mt-[35px]">
+      {allProducts.map((product) => (
+        <div key={product.id} className="flex gap-8">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="min-w-[300px] h-[200px] rounded-sm"
+          />
+          <div className="flex flex-col justify-center gap-3 mt-4">
+            <div>
+              <h3 className="font-bold text-[23px] text-[#102a42] tracking-widest capitalize ">
+                {product.name}
+              </h3>
+              <p className="text-brown/90 font-bold tracking-widest">
+                ${formatPrice(product.price)}
+              </p>
+            </div>
+            <p className="text-black/70">
+              {product.description.length > 150
+                ? product.description.slice(0, 150) + "..."
+                : product.description}
+            </p>
+            <Link
+              to={`/products/${product.id}`}
+              className="bg-brown text-[9px] text-white/60 px-2 py-[4px] w-fit rounded-sm tracking-widest my-2"
+            >
+              DETAILS
+            </Link>
+          </div>
+        </div>
+      ))}
+    </section>
+  );
+};
 
-  img {
-    width: 100%;
-    display: block;
-    width: 300px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: var(--radius);
-    margin-bottom: 1rem;
-  }
-  h4 {
-    margin-bottom: 0.5rem;
-  }
-  .price {
-    color: var(--clr-primary-6);
-    margin-bottom: 0.75rem;
-  }
-  p {
-    max-width: 45em;
-    margin-bottom: 1rem;
-  }
-  .btn {
-    font-size: 0.5rem;
-    padding: 0.25rem 0.5rem;
-  }
-  @media (min-width: 992px) {
-    article {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      column-gap: 2rem;
-      align-items: center;
-    }
-  }
-`
-
-export default ListView
+export default ListView;
