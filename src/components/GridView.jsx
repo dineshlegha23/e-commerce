@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const GridView = () => {
   const { allProducts } = useSelector((store) => store.products);
-  console.log(allProducts);
+
   return (
     <section className="grid grid-cols-3 gap-5 mt-[35px]">
       {allProducts.map((product) => (
