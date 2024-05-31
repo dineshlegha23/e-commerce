@@ -6,6 +6,7 @@ import Error from "../components/Error";
 import { addProducts } from "../store/productsSlice";
 import { products_url } from "../utils/constants";
 import Filters from "../components/Filters";
+import ProductList from "../components/ProductList";
 
 const ProductsPage = () => {
   const { allProducts } = useSelector((store) => store.products);
@@ -53,13 +54,13 @@ const ProductsPage = () => {
   return (
     <section>
       <Links home={true} products={"visible"} />
-      <div className="flex gap-5 mt-14 p-2 px-[85px]">
+      <div className="flex gap-[30px] mt-14 p-2 px-[85px]">
         <Filters
           categories={categories}
           companies={companies}
           colors={colors}
         />
-        <article className="w-full bg-blue-400 h-[1000px]">hh</article>
+        <ProductList />
       </div>
     </section>
   );
