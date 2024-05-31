@@ -3,6 +3,7 @@ import { FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { setCartAmount } from "../store/cartSlice";
 import { removeFromCart } from "../store/cartSlice";
+import { fixedPrice, formatPrice } from "../utils/helpers";
 
 const CartItem = ({ id, image, name, price, amount, color, stock }) => {
   const dispatch = useDispatch();
@@ -30,7 +31,9 @@ const CartItem = ({ id, image, name, price, amount, color, stock }) => {
         dispatch={dispatch}
         id={id}
       />
-      <p className="text-black/50 font-semibold">${price * amount}</p>
+      <p className="text-black/50 font-semibold">
+        ${fixedPrice(price * amount)}
+      </p>
       <FaTrash
         onClick={() => dispatch(removeFromCart({ id }))}
         color="white"
