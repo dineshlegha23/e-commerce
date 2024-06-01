@@ -5,6 +5,7 @@ import Links from "./Links";
 
 const ProductList = () => {
   const [isGridView, setIsGridView] = useState(true);
+
   return (
     <section className="w-full mt-[3px]">
       <div className="flex gap-8 items-center">

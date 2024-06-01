@@ -17,34 +17,6 @@ const GridView = () => {
           image={product.image}
         />
       ))}
-
-      <Product
-        gridView={true}
-        name={"Modern Poster"}
-        price={"599.99"}
-        image={"https://www.course-api.com/images/store/product-12.jpeg"}
-      />
-      <Product
-        gridView={true}
-        name={"Modern Poster"}
-        price={"599.99"}
-        image={"https://www.course-api.com/images/store/product-12.jpeg"}
-      />
-      <Product
-        name={"Modern Poster"}
-        price={"599.99"}
-        image={"https://www.course-api.com/images/store/product-12.jpeg"}
-      />
-      <Product
-        name={"Modern Poster"}
-        price={"599.99"}
-        image={"https://www.course-api.com/images/store/product-12.jpeg"}
-      />
-      <Product
-        name={"Modern Poster"}
-        price={"599.99"}
-        image={"https://www.course-api.com/images/store/product-12.jpeg"}
-      />
     </section>
   );
 };
