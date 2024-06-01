@@ -3,7 +3,7 @@ import GridView from "./GridView";
 import ListView from "./ListView";
 import Links from "./Links";
 
-const ProductList = () => {
+const ProductList = ({ filteredProducts }) => {
   const [isGridView, setIsGridView] = useState(true);
 
   return (
@@ -40,7 +40,9 @@ const ProductList = () => {
             ></path>
           </svg>
         </div>
-        <p className="text-black/80 min-w-fit">22 Products Found</p>
+        <p className="text-black/80 min-w-fit">
+          {filteredProducts.length} Products Found
+        </p>
         <span className="inline-block w-full h-[1px] bg-black/20"></span>
         <div className="flex gap-[10px] min-w-fit mr-1">
           <p>Sort By</p>
@@ -52,7 +54,11 @@ const ProductList = () => {
           </select>
         </div>
       </div>
-      {isGridView ? <GridView /> : <ListView />}
+      {isGridView ? (
+        <GridView filteredProducts={filteredProducts} />
+      ) : (
+        <ListView filteredProducts={filteredProducts} />
+      )}
     </section>
   );
 };

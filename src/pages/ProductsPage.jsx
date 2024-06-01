@@ -9,8 +9,9 @@ import Filters from "../components/Filters";
 import ProductList from "../components/ProductList";
 
 const ProductsPage = () => {
-  const { allProducts } = useSelector((store) => store.products);
-  console.log(allProducts);
+  const { allProducts, minPrice, maxPrice } = useSelector(
+    (store) => store.products
+  );
 
   const categories = [
     ...new Set(allProducts.map((product) => product.category)),
@@ -25,6 +26,15 @@ const ProductsPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
+  const [filteredProducts, setFilteredProducts] = useState(allProducts);
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("all");
+  const [company, setCompany] = useState("all");
+  const [color, setColor] = useState("all");
+  const [price, setPrice] = useState(3099.99);
+  const [isShippingFree, setIsShippingFree] = useState(false);
+
+  console.log(filteredProducts, minPrice, maxPrice);
 
   const fetchData = async () => {
     try {
@@ -32,6 +42,7 @@ const ProductsPage = () => {
       const response = await fetch(products_url);
       const data = await response.json();
       dispatch(addProducts(data));
+      setFilteredProducts(data);
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -44,6 +55,28 @@ const ProductsPage = () => {
     allProducts.length > 0 || fetchData();
   }, []);
 
+  useEffect(() => {
+    setFilteredProducts(
+      allProducts
+        .filter((product) => product?.name?.startsWith(search))
+        .filter((product) =>
+          category === "all" ? true : product?.category?.startsWith(category)
+        )
+        .filter((product) =>
+          company === "all" ? true : product?.company?.startsWith(company)
+        )
+        .filter((product) => product.price / 100 <= price)
+        .filter((product) =>
+          isShippingFree ? product?.shipping === true : true
+        )
+      // .filter((product) =>
+      //   color === "all"
+      //     ? true
+      //     : product?.colors?.flat().filter((color) => color.startsWith(color))
+      // )
+    );
+  }, [search, category, company, color, price, isShippingFree]);
+
   if (error) {
     return <Error />;
   }
@@ -51,16 +84,29 @@ const ProductsPage = () => {
   if (loading) {
     return <Loading />;
   }
+
   return (
     <section>
       <Links home={true} products={"visible"} />
       <div className="flex gap-[30px] mt-14 p-2 px-[85px]">
         <Filters
+          search={search}
+          setSearch={setSearch}
+          setCategory={setCategory}
+          setCompany={setCompany}
+          setColor={setColor}
           categories={categories}
           companies={companies}
           colors={colors}
+          minPrice={minPrice}
+          maxPrice={maxPrice}
+          price={price}
+          setPrice={setPrice}
+          isShippingFree={isShippingFree}
+          setIsShippingFree={setIsShippingFree}
+          filteredProducts={filteredProducts}
         />
-        <ProductList />
+        <ProductList filteredProducts={filteredProducts} />
       </div>
     </section>
   );

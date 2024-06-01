@@ -2,12 +2,12 @@ import React from "react";
 import Product from "./Product";
 import { useSelector } from "react-redux";
 
-const GridView = () => {
-  const { allProducts } = useSelector((store) => store.products);
+const GridView = ({ filteredProducts }) => {
+  // const { allProducts } = useSelector((store) => store.products);
 
   return (
     <section className="grid grid-cols-3 gap-5 mt-[35px]">
-      {allProducts.map((product) => (
+      {filteredProducts?.map((product) => (
         <Product
           key={product.id}
           id={product.id}
