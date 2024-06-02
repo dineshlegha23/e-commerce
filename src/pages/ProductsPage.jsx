@@ -65,7 +65,7 @@ const ProductsPage = () => {
         .filter((product) =>
           company === "all" ? true : product?.company?.startsWith(company)
         )
-        .filter((product) => product.price / 100 <= price)
+        .filter((product) => product.price <= price)
         .filter((product) =>
           isShippingFree ? product?.shipping === true : true
         )

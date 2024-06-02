@@ -12,6 +12,7 @@ const CartContent = () => {
   const subtotal = cartItems.reduce((acc, curr) => {
     return acc + curr.price * curr.amount;
   }, 0);
+  console.log(cartItems);
 
   return (
     <section className="px-[85px] py-20 h-[1000px]">

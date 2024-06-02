@@ -7,6 +7,7 @@ import { fixedPrice, formatPrice } from "../utils/helpers";
 
 const CartItem = ({ id, image, name, price, amount, color, stock }) => {
   const dispatch = useDispatch();
+  console.log(price, amount);
 
   return (
     <article className="grid grid-cols-[318px_1fr_1fr_1fr_auto] justify-items-center items-center tracking-widest">
@@ -23,7 +24,7 @@ const CartItem = ({ id, image, name, price, amount, color, stock }) => {
           </p>
         </div>
       </div>
-      <p className="text-brown">${price}</p>
+      <p className="text-brown">{formatPrice(price)}</p>
       <AmountButtons
         amount={amount}
         setAmount={setCartAmount}
@@ -32,7 +33,7 @@ const CartItem = ({ id, image, name, price, amount, color, stock }) => {
         id={id}
       />
       <p className="text-black/50 font-semibold">
-        ${fixedPrice(price * amount)}
+        {formatPrice(price * amount)}
       </p>
       <FaTrash
         onClick={() => dispatch(removeFromCart({ id }))}

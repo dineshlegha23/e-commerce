@@ -17,7 +17,7 @@ const Product = ({ image, name, price, id, gridView = false }) => {
       </div>
       <div className="flex justify-between tracking-widest">
         <p className="capitalize">{name}</p>
-        <p className="text-[#ab7a5f]">${formatPrice(price)}</p>
+        <p className="text-[#ab7a5f]">{formatPrice(price)}</p>
       </div>
     </Link>
   );

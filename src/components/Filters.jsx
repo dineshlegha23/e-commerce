@@ -92,13 +92,13 @@ const Filters = ({
             <h5 className="font-bold  text-black/70 tracking-widest my-1">
               Price
             </h5>
-            <p className="mb-1 text-black/70">${price.toLocaleString()}</p>
+            <p className="mb-1 text-black/70">{formatPrice(price)}</p>
             <input
               type="range"
               name="price"
               id="price"
-              min={formatPrice(minPrice)}
-              max={formatPrice(maxPrice)}
+              min={minPrice}
+              max={maxPrice}
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             />

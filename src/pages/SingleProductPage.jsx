@@ -130,7 +130,7 @@ const SingleProductPage = () => {
               id={product?.id}
               name={product?.name}
               color={currentColor}
-              price={formatPrice(product?.price)}
+              price={product?.price}
             />
           </div>
         </div>
