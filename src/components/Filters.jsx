@@ -8,8 +8,11 @@ const Filters = ({
   colors,
   search,
   setSearch,
+  category,
   setCategory,
+  company,
   setCompany,
+  color,
   setColor,
   minPrice,
   maxPrice,
@@ -44,16 +47,25 @@ const Filters = ({
             Category
           </h5>
           <ul className="text-[#617d98] text-sm flex flex-col gap-[5px] mt-2 tracking-widest capitalize">
-            <li className="border-b-[1px] pb-[2px] w-fit">
-              <button onClick={() => setCategory("all")}>All</button>
+            <li>
+              <button
+                className={`${
+                  category === "all" ? "border-b-[1px]" : ""
+                } pb-[2px] w-fit`}
+                onClick={() => setCategory("all")}
+              >
+                All
+              </button>
             </li>
-            {categories.map((category) => (
-              <li key={category} className="pb-[2px]">
+            {categories.map((currentCategory) => (
+              <li key={currentCategory}>
                 <button
-                  className=" capitalize"
-                  onClick={() => setCategory(category)}
+                  className={`${
+                    currentCategory === category ? "border-b-[1px]" : ""
+                  } pb-[2px] w-fit capitalize`}
+                  onClick={() => setCategory(currentCategory)}
                 >
-                  {category}
+                  {currentCategory}
                 </button>
               </li>
             ))}
@@ -65,14 +77,19 @@ const Filters = ({
           </h5>
           <select
             onChange={(e) => setCompany(e.target.value)}
+            value={company}
             name="company"
             id="company"
             className="bg-[#f1f5f9] rounded-md py-1 px-1 mt-1 text-xs"
           >
             <option value="all">all</option>
-            {companies.map((company) => (
-              <option value={company} key={company} className="capitalize">
-                {company}
+            {companies.map((currentCompany) => (
+              <option
+                value={currentCompany}
+                key={currentCompany}
+                className="capitalize"
+              >
+                {currentCompany}
               </option>
             ))}
           </select>
@@ -84,17 +101,23 @@ const Filters = ({
           <div className="flex gap-2 items-center py-[6px] text-[#617d98] tracking-widest mb-4">
             <button
               onClick={() => setColor("all")}
-              className="tracking-wider text-sm pb-[2px] border-b-[1px]"
+              className={`tracking-wider text-sm pb-[2px] ${
+                color === "all" && "border-b-[1px]"
+              }`}
             >
               All
             </button>
-            {colors.map((color) => (
+            {colors.map((currentColor) => (
               <button
-                key={color}
-                onClick={() => setColor(color)}
-                style={{ backgroundColor: color }}
-                className="w-4 h-4 rounded-full opacity-50"
-              ></button>
+                key={currentColor}
+                onClick={() => setColor(currentColor)}
+                style={{ backgroundColor: currentColor }}
+                className={`w-4 h-4 rounded-full flex justify-center items-center ${
+                  currentColor === color ? "opacity-100" : "opacity-50"
+                }`}
+              >
+                {currentColor === color && <FaCheck color="white" size={10} />}
+              </button>
             ))}
           </div>
           <div>

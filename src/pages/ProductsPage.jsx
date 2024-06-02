@@ -67,11 +67,11 @@ const ProductsPage = () => {
         .filter((product) =>
           isShippingFree ? product?.shipping === true : true
         )
-      // .filter((product) =>
-      //   color === "all"
-      //     ? true
-      //     : product?.colors?.flat().filter((color) => color.startsWith(color))
-      // )
+        .filter((product) =>
+          color === "all"
+            ? true
+            : product?.colors?.some((currentColor) => currentColor === color)
+        )
     );
   }, [search, category, company, color, price, isShippingFree]);
 
@@ -90,8 +90,11 @@ const ProductsPage = () => {
         <Filters
           search={search}
           setSearch={setSearch}
+          category={category}
           setCategory={setCategory}
+          company={company}
           setCompany={setCompany}
+          color={color}
           setColor={setColor}
           categories={categories}
           companies={companies}

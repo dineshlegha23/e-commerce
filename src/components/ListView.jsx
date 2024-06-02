@@ -3,12 +3,10 @@ import { formatPrice } from "../utils/helpers";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const ListView = () => {
-  const { allProducts } = useSelector((store) => store.products);
-
+const ListView = ({ filteredProducts }) => {
   return (
     <section className="flex flex-col gap-16 mt-[35px]">
-      {allProducts.map((product) => (
+      {filteredProducts.map((product) => (
         <div key={product.id} className="flex gap-8">
           <img
             src={product.image}
