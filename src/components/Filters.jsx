@@ -18,6 +18,15 @@ const Filters = ({
   isShippingFree,
   setIsShippingFree,
 }) => {
+  function handleClear() {
+    setSearch("");
+    setCategory("all");
+    setCompany("all");
+    setColor("all");
+    setPrice(309999);
+    setIsShippingFree(false);
+  }
+
   return (
     <article className="w-[234px] px-1 mx-auto h-fit sticky top-3">
       <div className="flex flex-col gap-[14px] ">
@@ -115,7 +124,10 @@ const Filters = ({
           />
         </div>
       </div>
-      <button className="px-3 text-sm py-1 mt-3 tracking-wider bg-[#bb2525] text-white rounded-md">
+      <button
+        onClick={handleClear}
+        className="px-3 text-sm py-1 mt-3 tracking-wider bg-[#bb2525] text-white rounded-md"
+      >
         Clear Filters
       </button>
     </article>

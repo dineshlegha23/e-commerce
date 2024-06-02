@@ -7,8 +7,8 @@ import { formatPrice } from "../utils/helpers";
 import { TiTick } from "react-icons/ti";
 
 const SingleProductPage = () => {
-  const [loading, setLoading] = useState();
-  const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [product, setProduct] = useState();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentColor, setCurrentColor] = useState();

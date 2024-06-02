@@ -31,10 +31,8 @@ const ProductsPage = () => {
   const [category, setCategory] = useState("all");
   const [company, setCompany] = useState("all");
   const [color, setColor] = useState("all");
-  const [price, setPrice] = useState(3099.99);
+  const [price, setPrice] = useState(309999);
   const [isShippingFree, setIsShippingFree] = useState(false);
-
-  console.log(filteredProducts, minPrice, maxPrice);
 
   const fetchData = async () => {
     try {

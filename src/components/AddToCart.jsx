@@ -17,17 +17,25 @@ const AddToCart = ({
 }) => {
   const dispatch = useDispatch();
   return (
-    <div>
-      <AmountButtons amount={amount} setAmount={setAmount} stock={stock} />
-      <button
-        className="uppercase bg-brown py-2 px-4 rounded-md text-white/80 mb-5 tracking-widest text-sm hover:bg-orange-800 transition-all"
-        onClick={() =>
-          dispatch(addToCart({ id, amount, name, image, color, price, stock }))
-        }
-      >
-        add to cart
-      </button>
-    </div>
+    <>
+      {stock === 0 ? (
+        <p className="mt-8 font-bold text-xl text-red-600">Out of Stock</p>
+      ) : (
+        <div>
+          <AmountButtons amount={amount} setAmount={setAmount} stock={stock} />
+          <button
+            className="uppercase bg-brown py-2 px-4 rounded-md text-white/80 mb-5 tracking-widest text-sm hover:bg-orange-800 transition-all"
+            onClick={() =>
+              dispatch(
+                addToCart({ id, amount, name, image, color, price, stock })
+              )
+            }
+          >
+            add to cart
+          </button>
+        </div>
+      )}
+    </>
   );
 };
 
