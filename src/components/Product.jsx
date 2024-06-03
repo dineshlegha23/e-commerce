@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Product = ({ image, name, price, id, gridView = false }) => {
   return (
     <Link to={`/products/${id}`} className={`relative flex flex-col gap-4 `}>
-      <div className="relative before:content-[''] before:absolute before:inset-0 before:block hover:before:bg-black hover:before:opacity-30 hover:cursor-pointer transition-all">
+      <div className="relative before:content-[''] before:absolute before:inset-0 before:block hover:before:bg-black hover:before:opacity-30 hover:cursor-pointer hover:w-fit transition-all">
         <img
           src={image}
           alt={name}

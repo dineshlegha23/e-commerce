@@ -31,7 +31,7 @@ const Filters = ({
   }
 
   return (
-    <article className="w-[234px] px-1 mx-auto h-fit sticky top-3 bottom-0">
+    <article className="w-[234px] px-1 mx-auto h-fit sticky top-4 bottom-0">
       <div className="flex flex-col gap-[14px] ">
         <form>
           <input
@@ -149,7 +149,7 @@ const Filters = ({
       </div>
       <button
         onClick={handleClear}
-        className="px-3 text-sm py-1 mt-3 tracking-wider bg-[#bb2525] text-white rounded-md"
+        className="text-sm px-[8px] py-[2px] mt-2 tracking-widest bg-[#bb2525] text-white rounded-md"
       >
         Clear Filters
       </button>
