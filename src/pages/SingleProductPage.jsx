@@ -23,7 +23,6 @@ const SingleProductPage = () => {
       setProduct(data);
       setLoading(false);
       setCurrentColor(data.colors[0]);
-      console.log(data);
     } catch (error) {
       setLoading(false);
       setError(true);

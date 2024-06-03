@@ -3,11 +3,10 @@ import { FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { setCartAmount } from "../store/cartSlice";
 import { removeFromCart } from "../store/cartSlice";
-import { fixedPrice, formatPrice } from "../utils/helpers";
+import { formatPrice } from "../utils/helpers";
 
 const CartItem = ({ id, image, name, price, amount, color, stock }) => {
   const dispatch = useDispatch();
-  console.log(price, amount);
 
   return (
     <article className="grid grid-cols-[318px_1fr_1fr_1fr_auto] justify-items-center items-center tracking-widest">

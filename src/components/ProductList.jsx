@@ -3,7 +3,7 @@ import GridView from "./GridView";
 import ListView from "./ListView";
 import Links from "./Links";
 
-const ProductList = ({ filteredProducts }) => {
+const ProductList = ({ filteredProducts, setSort, sort }) => {
   const [isGridView, setIsGridView] = useState(true);
 
   return (
@@ -46,7 +46,13 @@ const ProductList = ({ filteredProducts }) => {
         <span className="inline-block w-full h-[1px] bg-black/20"></span>
         <div className="flex gap-[10px] min-w-fit mr-1">
           <p>Sort By</p>
-          <select name="sort" id="sort" className="pr-1 text-[17px]">
+          <select
+            value={sort}
+            onChange={(e) => setSort(e.target.value)}
+            name="sort"
+            id="sort"
+            className="pr-1 text-[17px]"
+          >
             <option value="lowest">Price (Lowest)</option>
             <option value="highest">Price (Highest)</option>
             <option value="a-z">Name (A-Z)</option>

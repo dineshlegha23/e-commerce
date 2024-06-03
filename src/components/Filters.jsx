@@ -31,7 +31,7 @@ const Filters = ({
   }
 
   return (
-    <article className="w-[234px] px-1 mx-auto h-fit sticky top-3">
+    <article className="w-[234px] px-1 mx-auto h-fit sticky top-3 bottom-0">
       <div className="flex flex-col gap-[14px] ">
         <form>
           <input
@@ -46,12 +46,12 @@ const Filters = ({
           <h5 className="font-bold  text-black/70 tracking-widest my-1">
             Category
           </h5>
-          <ul className="text-[#617d98] text-sm flex flex-col gap-[5px] mt-2 tracking-widest capitalize">
+          <ul className="text-[#617d98] text-sm flex flex-col gap-[4px] mt-2 tracking-widest capitalize">
             <li>
               <button
                 className={`${
-                  category === "all" ? "border-b-[1px]" : ""
-                } pb-[2px] w-fit`}
+                  category === "all" ? "" : "border-transparent"
+                } pb-[2px] border-b-[1px] w-fit tracking-widest`}
                 onClick={() => setCategory("all")}
               >
                 All
@@ -61,8 +61,8 @@ const Filters = ({
               <li key={currentCategory}>
                 <button
                   className={`${
-                    currentCategory === category ? "border-b-[1px]" : ""
-                  } pb-[2px] w-fit capitalize`}
+                    currentCategory === category ? "" : "border-transparent"
+                  } pb-[2px] border-b-[1px] w-fit capitalize tracking-widest`}
                   onClick={() => setCategory(currentCategory)}
                 >
                   {currentCategory}
@@ -101,8 +101,8 @@ const Filters = ({
           <div className="flex gap-2 items-center py-[6px] text-[#617d98] tracking-widest mb-4">
             <button
               onClick={() => setColor("all")}
-              className={`tracking-wider text-sm pb-[2px] ${
-                color === "all" && "border-b-[1px]"
+              className={`tracking-wider text-sm pb-[2px] border-b-[1px] ${
+                color === "all" ? "" : "border-transparent"
               }`}
             >
               All

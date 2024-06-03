@@ -13,6 +13,18 @@ const ProductsPage = () => {
     (store) => store.products
   );
 
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [filteredProducts, setFilteredProducts] = useState(allProducts);
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("all");
+  const [company, setCompany] = useState("all");
+  const [color, setColor] = useState("all");
+  const [price, setPrice] = useState(309999);
+  const [isShippingFree, setIsShippingFree] = useState(false);
+  const [sort, setSort] = useState("lowest");
+
   const categories = [
     ...new Set(allProducts.map((product) => product.category)),
   ];
@@ -22,17 +34,6 @@ const ProductsPage = () => {
   const colors = [
     ...new Set([...allProducts.map((product) => product.colors)].flat()),
   ];
-
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const dispatch = useDispatch();
-  const [filteredProducts, setFilteredProducts] = useState(allProducts);
-  const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("all");
-  const [company, setCompany] = useState("all");
-  const [color, setColor] = useState("all");
-  const [price, setPrice] = useState(309999);
-  const [isShippingFree, setIsShippingFree] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -73,7 +74,28 @@ const ProductsPage = () => {
             : product?.colors?.some((currentColor) => currentColor === color)
         )
     );
-  }, [search, category, company, color, price, isShippingFree]);
+
+    if (sort === "lowest") {
+      setFilteredProducts((products) =>
+        [...products].sort((a, b) => a.price - b.price)
+      );
+    }
+    if (sort === "highest") {
+      setFilteredProducts((products) =>
+        [...products].sort((a, b) => b.price - a.price)
+      );
+    }
+    if (sort === "a-z") {
+      setFilteredProducts((products) =>
+        [...products].sort((a, b) => a.name.localeCompare(b.name))
+      );
+    }
+    if (sort === "z-a") {
+      setFilteredProducts((products) =>
+        [...products].sort((a, b) => b.name.localeCompare(a.name))
+      );
+    }
+  }, [search, category, company, color, price, isShippingFree, sort]);
 
   if (error) {
     return <Error />;
@@ -107,7 +129,11 @@ const ProductsPage = () => {
           setIsShippingFree={setIsShippingFree}
           filteredProducts={filteredProducts}
         />
-        <ProductList filteredProducts={filteredProducts} />
+        <ProductList
+          filteredProducts={filteredProducts}
+          sort={sort}
+          setSort={setSort}
+        />
       </div>
     </section>
   );
