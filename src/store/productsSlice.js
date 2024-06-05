@@ -12,10 +12,12 @@ export const productsSlice = createSlice({
   reducers: {
     addProducts: (state, action) => {
       state.allProducts = action.payload;
+
       state.minPrice = action.payload.reduce((acc, product) => {
         if (acc === null || product.price < acc) return product.price;
         return acc;
       }, null);
+
       state.maxPrice = action.payload.reduce((acc, product) => {
         if (acc === null || product.price > acc) return product.price;
         return acc;
