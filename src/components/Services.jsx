@@ -1,72 +1,67 @@
-import React from 'react'
-import styled from 'styled-components'
-import { services } from '../utils/constants'
+import React from "react";
+import { services } from "../utils/constants";
+import { GiCompass, GiDiamondHard, GiStabbedNote } from "react-icons/gi";
 
 const Services = () => {
-  return <h4>services </h4>
-}
+  return (
+    <section className="bg-brown/25 px-[85px] h-[470px]">
+      <div className="flex justify-between py-20 mx-auto mb-3">
+        <h3 className="text-[32px] font-bold tracking-wider leading-none text-[#453227]">
+          Custom Furniture <br />
+          Built Only For You
+        </h3>
+        <p className="w-[600px] text-[#795744] leading-7">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe dolorum
+          debitis consectetur reprehenderit non aliquam voluptates dolore aut
+          vero consequuntur.
+        </p>
+      </div>
+      <ul className="flex gap-10">
+        <li className=" bg-[#c5a491] text-center py-10 px-8 flex flex-col gap-3">
+          <GiCompass
+            size={65}
+            className="mx-auto text-[#453227] bg-white/60 rounded-full p-4"
+          />
+          <h4 className="text-2xl text-[#453227] font-bold tracking-wider">
+            Mission
+          </h4>
+          <p className="text-[#5f4435] leading-7">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit
+            autem unde numquam nisi
+          </p>
+        </li>
+        <li className=" bg-[#c5a491] text-center py-10 px-8 flex flex-col gap-3">
+          <GiDiamondHard
+            size={65}
+            className="mx-auto text-[#453227] bg-white/60 rounded-full p-4"
+          />
+          <h4 className="text-2xl text-[#453227] font-bold tracking-wider">
+            Vision
+          </h4>
+          <p className="text-[#5f4435] leading-7">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit
+            autem unde numquam nisi
+          </p>
+        </li>
+        <li className=" bg-[#c5a491] text-center py-10 px-8 flex flex-col gap-3">
+          <GiStabbedNote
+            size={65}
+            className="mx-auto text-[#453227] bg-white/60 rounded-full p-4"
+          />
+          <h4 className="text-2xl text-[#453227] font-bold tracking-wider">
+            History
+          </h4>
+          <p className="text-[#5f4435] leading-7">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit
+            autem unde numquam nisi
+          </p>
+        </li>
+      </ul>
+    </section>
+  );
+};
 
-const Wrapper = styled.section`
-  h3,
-  h4 {
-    color: var(--clr-primary-1);
-  }
-  padding: 5rem 0;
-
-  background: var(--clr-primary-10);
-
-  .header h3 {
-    margin-bottom: 2rem;
-  }
-  p {
-    margin-bottom: 0;
-    line-height: 1.8;
-    color: var(--clr-primary-3);
-  }
-  .services-center {
-    margin-top: 4rem;
-    display: grid;
-    gap: 2.5rem;
-  }
-  .service {
-    background: var(--clr-primary-7);
-    text-align: center;
-    padding: 2.5rem 2rem;
-    border-radius: var(--radius);
-    p {
-      color: var(--clr-primary-2);
-    }
-  }
-  span {
-    width: 4rem;
-    height: 4rem;
-    display: grid;
-    margin: 0 auto;
-    place-items: center;
-    margin-bottom: 1rem;
-    border-radius: 50%;
-    background: var(--clr-primary-10);
-    color: var(--clr-primary-1);
-    svg {
-      font-size: 2rem;
-    }
-  }
-  @media (min-width: 992px) {
-    .header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  @media (min-width: 576px) {
-    .services-center {
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    }
-  }
-  @media (min-width: 1280px) {
-    padding: 0;
-    .section-center {
-      transform: translateY(5rem);
-    }
-  }
-`
-export default Services
+export default Services;

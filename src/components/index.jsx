@@ -4,7 +4,7 @@ import CartButtons from "./CartButtons";
 // import Footer from "./Footer";
 // import Sidebar from "./Sidebar";
 import Hero from "./Hero";
-// import Services from "./Services";
+import Services from "./Services";
 // import Contact from "./Contact";
 import Loading from "./Loading";
 // import Error from "./Error";
@@ -25,7 +25,7 @@ export {
   // Footer,
   // Sidebar,
   Hero,
-  // Services,
+  Services,
   // Contact,
   Loading,
   // Error,
