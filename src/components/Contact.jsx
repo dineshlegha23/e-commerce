@@ -1,72 +1,30 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
 
 const Contact = () => {
-  return <h4>contact section</h4>
-}
-const Wrapper = styled.section`
-  padding: 5rem 0;
-  h3 {
-    text-transform: none;
-  }
-  p {
-    line-height: 2;
-    max-width: 45em;
-    color: var(--clr-grey-5);
-  }
-  .contact-form {
-    width: 90vw;
-    max-width: 500px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-  }
+  return (
+    <section className="px-[85px] mt-[235px] mb-56">
+      <h3 className="text-[#102a42] text-[32px] font-bold tracking-wider">
+        Join our newsletter and get 20% off
+      </h3>
+      <div className="flex justify-between items-center gap-20">
+        <p className="text-black/60 leading-8 mt-5 w-[1050px] pb-5">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat sint
+          unde quaerat ratione soluta veniam provident adipisci cumque eveniet
+          tempore?
+        </p>
+        <div className="w-full text-right">
+          <input
+            className="border-2 w-4/6 py-[6px] pl-4 rounded-s-md border-e-0 placeholder:text-black"
+            type="email"
+            placeholder="Enter Email..."
+          />
+          <button className="bg-brown px-5 py-[6px] border-2 tracking-widest">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
 
-  .form-input,
-  .submit-btn {
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border: 2px solid var(--clr-black);
-  }
-  .form-input {
-    border-right: none;
-    color: var(--clr-grey-3);
-    border-top-left-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-  }
-  .submit-btn {
-    border-top-right-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
-  }
-  .form-input::placeholder {
-    color: var(--clr-black);
-    text-transform: capitalize;
-  }
-  .submit-btn {
-    background: var(--clr-primary-5);
-    text-transform: capitalize;
-    letter-spacing: var(--spacing);
-    cursor: pointer;
-    transition: var(--transition);
-    color: var(--clr-black);
-  }
-  .submit-btn:hover {
-    color: var(--clr-white);
-  }
-  @media (min-width: 992px) {
-    .content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 8rem;
-      margin-top: 2rem;
-    }
-    p {
-      margin-bottom: 0;
-    }
-  }
-  @media (min-width: 1280px) {
-    padding: 15rem 0;
-  }
-`
-
-export default Contact
+export default Contact;
