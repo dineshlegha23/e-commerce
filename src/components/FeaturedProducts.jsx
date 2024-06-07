@@ -53,9 +53,12 @@ const FeaturedProducts = () => {
               )}
           </div>
         )}
-        <button className="bg-brown text-white/80 uppercase tracking-widest text-[15px] px-4 py-[5px] rounded-md">
+        <Link
+          to={"/products"}
+          className="bg-brown text-white/80 uppercase tracking-widest text-[15px] px-4 py-[5px] rounded-md"
+        >
           All products
-        </button>
+        </Link>
       </div>
     </section>
   );
