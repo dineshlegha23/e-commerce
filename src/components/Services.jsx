@@ -4,8 +4,8 @@ import { GiCompass, GiDiamondHard, GiStabbedNote } from "react-icons/gi";
 
 const Services = () => {
   return (
-    <section className="bg-brown/25 px-[85px] h-[470px]">
-      <div className="flex justify-between py-20 mx-auto mb-3">
+    <section className="bg-brown/25 h-[470px]">
+      <div className="flex justify-between max-w-[1350px] px-[85px] py-20 mx-auto mb-3">
         <h3 className="text-[32px] font-bold tracking-wider leading-none text-[#453227]">
           Custom Furniture <br />
           Built Only For You
@@ -16,7 +16,7 @@ const Services = () => {
           vero consequuntur.
         </p>
       </div>
-      <ul className="flex gap-10">
+      <ul className="flex gap-10 max-w-[1350px] mx-auto px-[85px]">
         <li className=" bg-[#c5a491] text-center py-10 px-8 flex flex-col gap-3">
           <GiCompass
             size={65}
