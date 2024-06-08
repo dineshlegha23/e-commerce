@@ -42,9 +42,9 @@ const SingleProductPage = () => {
   }
 
   return (
-    <div className="mb-28">
+    <div className="mb-14">
       <Links home={true} products={true} link={product?.name} />
-      <div className="px-[90px] mt-[82px] h-screen">
+      <div className="max-w-[1350px] mx-auto px-[90px] mt-[82px]">
         <Link
           to={"/products"}
           className="bg-brown text-white/80 tracking-wider px-3 py-1 rounded-md"

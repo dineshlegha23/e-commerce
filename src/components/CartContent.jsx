@@ -14,7 +14,7 @@ const CartContent = () => {
   }, 0);
 
   return (
-    <section className="px-[85px] py-20">
+    <section className="max-w-[1350px] mx-auto px-[85px] py-20">
       <CartColumns />
       <div className="flex flex-col gap-12 pb-10 border-b-[1px] border-black/20">
         {cartItems.map((item) => (

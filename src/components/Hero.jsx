@@ -17,9 +17,12 @@ const Hero = () => {
           aperiam odio ducimus, obcaecati libero et quia tempora excepturi quis
           alias?
         </p>
-        <button className="bg-[#ab7a5f] px-6 py-3 rounded-md w-fit uppercase text-white font-light text-base tracking-widest">
+        <Link
+          to={"/products"}
+          className="bg-[#ab7a5f] px-6 py-3 rounded-md w-fit uppercase text-white font-light text-base tracking-widest"
+        >
           shop now
-        </button>
+        </Link>
       </div>
       <div className="relative mr-11">
         <img
