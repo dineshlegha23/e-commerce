@@ -4,12 +4,12 @@ import Links from "../components/Links";
 
 const AboutPage = () => {
   return (
-    <section className="mb-20">
+    <section className="mb-20  min-h-[calc(100vh-128px-30px-80px)] ">
       <Links home={true} link={"About"} />
-      <div className="px-[85px] mt-20 flex gap-16">
+      <div className="max-w-[1350px] mx-auto px-[85px] mt-20 flex gap-16">
         <img
           src={aboutImg}
-          alt="table"
+          alt="table image"
           className="w-[555px] h-[500px] object-cover"
         />
         <div className="w-[550px]">
