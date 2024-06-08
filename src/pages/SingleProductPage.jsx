@@ -42,7 +42,7 @@ const SingleProductPage = () => {
   }
 
   return (
-    <div>
+    <div className="mb-28">
       <Links home={true} products={true} link={product?.name} />
       <div className="px-[90px] mt-[82px] h-screen">
         <Link

@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Hero,
-  FeaturedProducts,
-  Services,
-  Contact,
-  Footer,
-} from "../components";
+import { Hero, FeaturedProducts, Services, Contact } from "../components";
 
 const HomePage = () => {
   return (
@@ -14,7 +8,6 @@ const HomePage = () => {
       <FeaturedProducts />
       <Services />
       <Contact />
-      <Footer />
     </div>
   );
 };

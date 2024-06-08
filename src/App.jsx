@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "../src/components/Navbar";
+import { Navbar, Footer } from "../src/components";
 import {
   HomePage,
   AboutPage,
@@ -13,7 +13,7 @@ import {
 
 const App = () => {
   return (
-    <div className="max-w-[1500px] mx-auto">
+    <div className="mx-auto">
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -24,6 +24,7 @@ const App = () => {
           <Route path="/products" element={<ProductsPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );

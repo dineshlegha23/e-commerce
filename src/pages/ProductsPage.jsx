@@ -106,7 +106,7 @@ const ProductsPage = () => {
   }
 
   return (
-    <section>
+    <section className="mb-14">
       <Links home={true} products={"visible"} />
       <div className="flex gap-[30px] mt-14 p-2 px-[85px]">
         <Filters
