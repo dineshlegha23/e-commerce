@@ -35,7 +35,7 @@ const FeaturedProducts = () => {
   }
 
   return (
-    <section className="py-20 bg-[#f1f5f8] px-[25px] [@media(max-width:600px)]:px-3 pb-20">
+    <section className="py-20 bg-[#f1f5f8] px-[85px] lg:px-8 md:px-5 [@media(max-width:500px)]:px-3 pb-20">
       <div className="flex flex-col gap-16 justify-center items-center h-full">
         <h2 className="text-[39px] text-center [@media(max-width:800px)]:text-3xl tracking-wider font-bold text-black/80">
           Featured Products
