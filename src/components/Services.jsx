@@ -16,7 +16,7 @@ const Services = () => {
           vero consequuntur.
         </p>
       </div>
-      <ul className="flex gap-10 max-w-[1350px] mx-auto px-[85px]">
+      <ul className="flex gap-10 max-w-[1350px] mx-auto px-[85px] [@media(max-width:994px)]:hidden">
         <li className=" bg-[#c5a491] text-center py-10 px-8 flex flex-col gap-3">
           <GiCompass
             size={65}

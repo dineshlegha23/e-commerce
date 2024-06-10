@@ -10,7 +10,7 @@ const Product = ({ image, name, price, id, gridView = false }) => {
         <img
           src={image}
           alt={name}
-          className={`${gridView ? "w-[300px]" : "w-[450px]"} ${
+          className={`w-[800px] ${gridView ? "w-[300px]" : "w-[450px]"} ${
             gridView ? "h-[175px]" : "h-[227px]"
           } rounded-sm object-cover`}
         />
