@@ -5,9 +5,9 @@ import heroBcg2 from "../assets/hero-bcg-2.jpeg";
 
 const Hero = () => {
   return (
-    <div className="flex justify-between items-center max-w-[1350px] mx-auto [@media(max-width:994px)]:text-left mt-1 min-h-[calc(100vh-80px)] px-[85px] [@media(max-width:700px)]:px-5">
+    <div className="transition-all flex justify-between items-center max-w-[1350px] mx-auto [@media(max-width:994px)]:text-left mt-1 min-h-[calc(100vh-80px)] md:min-h-[350px] px-[85px] [@media(max-width:700px)]:px-5">
       <div className="flex flex-col max-w-[550px] [@media(max-width:994px)]:min-w-full [@media(max-width:994px)]:text-base gap-10 [@media(max-width:994px)]:gap-4 px-1 text-black/60 text-[20px] font-normal">
-        <h1 className="font-bold text-5xl [@media(max-width:500px)]:text-3xl text-black/90 tracking-wider mr-5">
+        <h1 className="font-bold text-5xl [@media(max-width:500px)]:text-3xl lg:text-4xl text-black/90 tracking-wider mr-5">
           Design Your <br />
           Comfort Zone
         </h1>

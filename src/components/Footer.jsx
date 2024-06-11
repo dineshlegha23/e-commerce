@@ -6,7 +6,7 @@ const Footer = () => {
       <div>
         <p className="md:w-full">
           &copy; 2024 <span className="text-brown">ComfySloth</span>
-        </p>{" "}
+        </p>
         <p>All rights reserved</p>
       </div>
     </footer>

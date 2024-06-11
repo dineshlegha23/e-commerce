@@ -14,7 +14,7 @@ const Contact = () => {
         </p>
         <div className="w-full text-right lg:text-center">
           <input
-            className="border-2 w-4/6 xs:w-3/6 py-[6px] pl-4 rounded-s-md border-e-0 placeholder:text-black"
+            className="border-2 w-4/6 xs:w-[calc(100%-120px)] py-[6px] pl-4 rounded-s-md border-e-0 placeholder:text-black"
             type="email"
             placeholder="Enter Email..."
           />
