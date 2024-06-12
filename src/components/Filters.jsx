@@ -31,7 +31,7 @@ const Filters = ({
   }
 
   return (
-    <article className="w-[234px] px-1 mx-auto h-fit sticky top-4 bottom-0">
+    <article className="w-[234px] px-1 h-fit sticky [@media(max-width:800px)]:relative top-4 bottom-0">
       <div className="flex flex-col gap-[14px] ">
         <form>
           <input

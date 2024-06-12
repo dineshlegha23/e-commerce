@@ -7,7 +7,7 @@ const ProductList = ({ filteredProducts, setSort, sort }) => {
   const [isGridView, setIsGridView] = useState(true);
 
   return (
-    <section className="w-full mt-[3px]">
+    <section className=" [@media(max-width:800px)]:mt-10 mt-[3px]">
       <div className="flex gap-8 items-center">
         <div className="flex gap-2">
           <svg

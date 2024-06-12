@@ -6,7 +6,7 @@ const GridView = ({ filteredProducts }) => {
   // const { allProducts } = useSelector((store) => store.products);
 
   return (
-    <section className="grid grid-cols-3 gap-5 mt-[35px]">
+    <section className="grid grid-cols-3 xl:grid-cols-2 lg:grid-cols-1 gap-5 mt-[35px]">
       {filteredProducts?.map((product) => (
         <Product
           key={product.id}
