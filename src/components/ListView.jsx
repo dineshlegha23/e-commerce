@@ -5,13 +5,16 @@ import { useSelector } from "react-redux";
 
 const ListView = ({ filteredProducts }) => {
   return (
-    <section className="flex flex-col gap-16 mt-[35px]">
+    <section className="flex flex-col gap-16  [@media(max-width:992px)]:gap-10 mt-[35px]">
       {filteredProducts.map((product) => (
-        <div key={product.id} className="flex gap-8">
+        <div
+          key={product.id}
+          className="flex [@media(max-width:992px)]:flex-col gap-8  [@media(max-width:992px)]:gap-0"
+        >
           <img
             src={product.image}
             alt={product.name}
-            className="min-w-[300px] h-[200px] rounded-sm"
+            className="min-w-[300px] [@media(max-width:992px)]:min-w-[250px] max-w-[300px] h-[200px] rounded-sm"
           />
           <div className="flex flex-col justify-center gap-3 mt-4">
             <div>

@@ -108,7 +108,7 @@ const ProductsPage = () => {
   return (
     <section className="mb-14">
       <Links home={true} products={"visible"} />
-      <div className="flex [@media(max-width:800px)]:flex-col gap-[30px] max-w-[1350px] mx-auto mt-14 p-2 px-[85px] lg:px-8">
+      <div className="flex [@media(max-width:800px)]:flex-col gap-[30px] max-w-[1350px] mx-auto mt-14 p-2 px-[85px] lg:px-5 md:px-3">
         <Filters
           search={search}
           setSearch={setSearch}

@@ -8,7 +8,7 @@ const ProductList = ({ filteredProducts, setSort, sort }) => {
 
   return (
     <section className=" [@media(max-width:800px)]:mt-10 mt-[3px]">
-      <div className="flex gap-8 items-center">
+      <div className="flex [@media(max-width:550px)]:block gap-8 items-center">
         <div className="flex gap-2">
           <svg
             onClick={() => setIsGridView(true)}
@@ -40,11 +40,11 @@ const ProductList = ({ filteredProducts, setSort, sort }) => {
             ></path>
           </svg>
         </div>
-        <p className="text-black/80 min-w-fit">
+        <p className="text-black/80 md:text-sm min-w-fit [@media(max-width:550px)]:mt-3">
           {filteredProducts.length} Products Found
         </p>
         <span className="inline-block w-full h-[1px] bg-black/20"></span>
-        <div className="flex gap-[10px] min-w-fit mr-1">
+        <div className="flex gap-[10px] min-w-fit mr-1 [@media(max-width:550px)]:mt-3">
           <p>Sort By</p>
           <select
             value={sort}

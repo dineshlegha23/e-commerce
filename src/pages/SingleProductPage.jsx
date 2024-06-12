@@ -44,21 +44,21 @@ const SingleProductPage = () => {
   return (
     <div className="mb-14">
       <Links home={true} products={true} link={product?.name} />
-      <div className="max-w-[1350px] mx-auto px-[90px] mt-[82px]">
+      <div className="max-w-[1350px] mx-auto px-[90px] xl:px-10 lg:px-8 md:px-3 mt-[82px]">
         <Link
           to={"/products"}
           className="bg-brown text-white/80 tracking-wider px-3 py-1 rounded-md"
         >
           BACK TO PRODUCTS
         </Link>
-        <div className="mt-12 flex gap-16">
-          <div className="w-[552px]">
+        <div className="mt-14 flex [@media(max-width:990px)]:flex-col gap-16">
+          <div className="w-[552px] [@media(max-width:992px)]:w-full">
             <img
-              className="w-[552px] h-[500px] object-cover rounded-md"
+              className="w-[552px] [@media(max-width:992px)]:w-full h-[500px] object-cover rounded-md"
               src={product?.images[currentImageIndex]?.url}
               alt={`${product?.name}`}
             />
-            <div className="grid grid-cols-5 gap-4 mt-4">
+            <div className="grid grid-cols-5 gap-4 xs:gap-2 mt-4">
               {product?.images?.map((product, index) => (
                 <ProductImages
                   key={product?.id}
@@ -78,7 +78,7 @@ const SingleProductPage = () => {
             <p className="text-brown text-xl tracking-widest font-bold mt-1">
               ${formatPrice(product?.price)}
             </p>
-            <p className="w-[555px] text-black/80 text-wider text-base leading-8">
+            <p className="max-w-[555px] text-black/80 text-wider text-base leading-8">
               {product?.description}
             </p>
             <section className="w-[300px] flex flex-col gap-5 mt-3">

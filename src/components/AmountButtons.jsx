@@ -27,7 +27,9 @@ const AmountButtons = ({ id, amount, setAmount, stock, dispatch }) => {
 
   return (
     <div
-      className={`flex items-center ${id ? "gap-2" : "gap-5"} px-4 pt-6 pb-4`}
+      className={`flex items-center ${
+        id ? "gap-2 xs:gap-0" : "gap-5"
+      } px-4 pt-6 pb-4`}
     >
       <button>
         <FaMinus size={14} cursor={"pointer"} onClick={descreaseAmount} />
@@ -35,7 +37,7 @@ const AmountButtons = ({ id, amount, setAmount, stock, dispatch }) => {
 
       <span
         className={`${
-          id ? "text-2xl" : "text-4xl"
+          id ? "text-2xl md:text-lg" : "text-4xl"
         } font-bold text-black/80 w-10 text-center`}
       >
         {amount}

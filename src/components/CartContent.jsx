@@ -14,7 +14,7 @@ const CartContent = () => {
   }, 0);
 
   return (
-    <section className="max-w-[1350px] mx-auto px-[85px] py-20">
+    <section className="max-w-[1350px] mx-auto px-[85px] lg:px-8 xs:px-3 py-20">
       <CartColumns />
       <div className="flex flex-col gap-12 pb-10 border-b-[1px] border-black/20">
         {cartItems.map((item) => (
@@ -30,7 +30,7 @@ const CartContent = () => {
           />
         ))}
       </div>
-      <div className="my-14 flex justify-between">
+      <div className="my-14 flex justify-between xs:text-xs">
         <Link
           to={"/products"}
           className="bg-brown text-white py-2 px-3 tracking-wider rounded-md"
