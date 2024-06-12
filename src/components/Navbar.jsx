@@ -7,12 +7,12 @@ import { CartButtons } from "../components";
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-between max-w-[1350px] mx-auto p-2 px-[90px] lg:px-14">
+    <nav className="flex justify-between items-center max-w-[1350px] mx-auto py-4 px-[90px] xs:px-5 lg:px-12">
       <Link to={"/"}>
         <img
           src={logo}
           alt="comfy logo"
-          className="w-44 [@media(max-width:994px)]:hidden -ml-[18px]"
+          className="w-44 lg:w-52 -ml-[18px] lg:-ml-8 xs:-ml-5"
         />
       </Link>
       <ul className="[@media(max-width:994px)]:hidden flex gap-8 py-2 px-3 items-center text-lg font-normal">
@@ -24,7 +24,12 @@ const Navbar = () => {
           </Link>
         ))}
       </ul>
-      <CartButtons />
+      <div className="cursor-pointer">
+        <FaBars size={32} color="brown" />
+      </div>
+      <div className="[@media(max-width:994px)]:hidden">
+        <CartButtons />
+      </div>
     </nav>
   );
 };
