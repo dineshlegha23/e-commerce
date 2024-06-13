@@ -8,12 +8,13 @@ import cartReducer, {
   addToCart,
   removeFromCart,
   setCartAmount,
+  clearCart,
 } from "./cartSlice";
 
 const localStorageMiddleware = createListenerMiddleware();
 
 localStorageMiddleware.startListening({
-  matcher: isAnyOf(addToCart, removeFromCart, setCartAmount),
+  matcher: isAnyOf(addToCart, removeFromCart, setCartAmount, clearCart),
   effect: (action, listenerApi) =>
     localStorage.setItem(
       "cartItems",
