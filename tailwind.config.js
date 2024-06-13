@@ -18,9 +18,13 @@ export default {
           "50%": { transform: "scale(10)", opacity: 0.5 },
           "100%": { transform: "scale(40)", opacity: 0 },
         },
-        widthfull: {
+        widthshow: {
           "0%": { transform: "translate(-100vw)" },
           "100%": { transform: "translate(0px)" },
+        },
+        widthhide: {
+          "0%": { transform: "translate(0px)" },
+          "100%": { transform: "translate(-100vw)" },
         },
         bounced: {
           "0%": { opacity: 0, height: 0 },
@@ -29,7 +33,8 @@ export default {
       },
       animation: {
         "ripple-animation": "ripple 1s ease 1 forwards",
-        "width-animation": "widthfull 0.3s ease",
+        "width-show-animation": "widthshow 0.3s ease",
+        "width-hide-animation": "widthhide 0.3s ease forwards",
       },
       colors: {
         gray: "#3E3D40",

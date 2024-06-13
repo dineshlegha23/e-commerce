@@ -18,40 +18,49 @@ const Navbar = () => {
           className="w-44 lg:w-52 -ml-[18px] lg:-ml-5 xs:-ml-5"
         />
       </Link>
-      {isSidebarOpen && (
-        <nav
-          className={`py-4 h-screen w-screen bg-white z-10 fixed overflow-hidden top-0 left-0 bottom-0 animate-width-animation`}
-        >
-          <div className="flex justify-between items-center px-7">
+
+      <nav
+        className={`
+        h-screen w-screen py-4 bg-white z-10 fixed overflow-hidden top-0 left-0 bottom-0
+        ${
+          isSidebarOpen
+            ? "animate-width-show-animation "
+            : "animate-width-hide-animation"
+        }
+        `}
+      >
+        <div className="flex justify-between items-center px-7">
+          <Link to={"/"} onClick={() => setIsSidebarOpen(false)}>
             <img src={logo} alt="logo" width={170} className="-ml-4" />
-            <ImCross
-              size={20}
-              color="brown"
-              className="cursor-pointer"
-              onClick={() => setIsSidebarOpen(false)}
-            />
-          </div>
-          <ul className="flex flex-col py-4 w-full">
-            {links.map((link) => (
-              <Link
-                to={link.url}
-                key={link.id}
-                onClick={() => setIsSidebarOpen(false)}
-              >
-                <p className="capitalize py-4 pl-5 border-b-2 border-transparent hover:bg-blue-100 hover:pl-8 transition-all tracking-wider">
-                  {link.text}
-                </p>
-              </Link>
-            ))}
-          </ul>
-          <div
+          </Link>
+          <ImCross
+            size={20}
+            color="brown"
+            className="cursor-pointer"
             onClick={() => setIsSidebarOpen(false)}
-            className="flex justify-center items-center"
-          >
-            <CartButtons />
-          </div>
-        </nav>
-      )}
+          />
+        </div>
+        <ul className="flex flex-col py-4 w-full">
+          {links.map((link) => (
+            <Link
+              to={link.url}
+              key={link.id}
+              onClick={() => setIsSidebarOpen(false)}
+            >
+              <p className="capitalize py-4 pl-5 border-b-2 border-transparent hover:bg-blue-100 hover:pl-8 transition-all tracking-wider">
+                {link.text}
+              </p>
+            </Link>
+          ))}
+        </ul>
+        <div
+          onClick={() => setIsSidebarOpen(false)}
+          className="flex justify-center items-center"
+        >
+          <CartButtons />
+        </div>
+      </nav>
+
       <ul className="[@media(max-width:994px)]:hidden flex gap-8 py-2 px-3 items-center text-lg font-normal">
         {links.map((link) => (
           <Link to={link.url} key={link.id}>
