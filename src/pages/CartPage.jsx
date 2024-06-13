@@ -16,7 +16,9 @@ const CartPage = () => {
         </div>
       ) : (
         <div className="flex flex-col justify-center items-center py-20">
-          <p className="text-5xl font-semibold">Your cart is empty...</p>
+          <p className="text-5xl font-semibold md:text-4xl xs:text-2xl">
+            Your cart is empty...
+          </p>
           <Link
             to={"/products"}
             className="bg-brown text-white/80 py-1 px-5 rounded-md my-4"
