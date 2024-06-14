@@ -3,21 +3,22 @@ import { getUniqueValues, formatPrice } from "../utils/helpers";
 import { FaCheck } from "react-icons/fa";
 
 const Filters = ({
+  updateFilterValues,
   categories,
   companies,
   colors,
   search,
   setSearch,
   category,
-  setCategory,
+  // setCategory,
   company,
-  setCompany,
+  // setCompany,
   color,
-  setColor,
+  // setColor,
   minPrice,
   maxPrice,
   price,
-  setPrice,
+  // setPrice,
   isShippingFree,
   setIsShippingFree,
 }) => {
@@ -49,10 +50,11 @@ const Filters = ({
           <ul className="text-[#617d98] text-sm flex flex-col gap-[4px] mt-2 tracking-widest capitalize">
             <li>
               <button
+                name="category"
                 className={`${
                   category === "all" ? "" : "border-transparent"
                 } pb-[2px] border-b-[1px] w-fit tracking-widest`}
-                onClick={() => setCategory("all")}
+                onClick={(e) => updateFilterValues(e.target.name, "all")}
               >
                 All
               </button>
@@ -60,10 +62,13 @@ const Filters = ({
             {categories.map((currentCategory) => (
               <li key={currentCategory}>
                 <button
+                  name="category"
                   className={`${
                     currentCategory === category ? "" : "border-transparent"
                   } pb-[2px] border-b-[1px] w-fit capitalize tracking-widest`}
-                  onClick={() => setCategory(currentCategory)}
+                  onClick={(e) =>
+                    updateFilterValues(e.target.name, currentCategory)
+                  }
                 >
                   {currentCategory}
                 </button>
@@ -76,7 +81,7 @@ const Filters = ({
             Company
           </h5>
           <select
-            onChange={(e) => setCompany(e.target.value)}
+            onChange={(e) => updateFilterValues(e.target.name, e.target.value)}
             value={company}
             name="company"
             id="company"
@@ -100,7 +105,8 @@ const Filters = ({
           </h5>
           <div className="flex gap-2 items-center py-[6px] text-[#617d98] tracking-widest mb-4">
             <button
-              onClick={() => setColor("all")}
+              name="color"
+              onClick={(e) => updateFilterValues(e.target.name, "all")}
               className={`tracking-wider text-sm pb-[2px] border-b-[1px] ${
                 color === "all" ? "" : "border-transparent"
               }`}
@@ -110,7 +116,8 @@ const Filters = ({
             {colors.map((currentColor) => (
               <button
                 key={currentColor}
-                onClick={() => setColor(currentColor)}
+                name="color"
+                onClick={(e) => updateFilterValues(e.target.name, currentColor)}
                 style={{ backgroundColor: currentColor }}
                 className={`w-4 h-4 rounded-full flex justify-center items-center ${
                   currentColor === color ? "opacity-100" : "opacity-50"
