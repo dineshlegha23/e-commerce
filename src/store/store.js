@@ -11,6 +11,8 @@ import cartReducer, {
   clearCart,
 } from "./cartSlice";
 
+import filtersReducer from "./filtersSlice";
+
 const localStorageMiddleware = createListenerMiddleware();
 
 localStorageMiddleware.startListening({
@@ -23,7 +25,12 @@ localStorageMiddleware.startListening({
 });
 
 export const store = configureStore({
-  reducer: { products: productsReducer, cart: cartReducer },
+  reducer: {
+    products: productsReducer,
+    cart: cartReducer,
+    filters: filtersReducer,
+  },
+
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().prepend(localStorageMiddleware.middleware),
 });
