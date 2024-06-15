@@ -155,7 +155,7 @@ import { updateFilters, clearFilters } from "../store/filtersSlice";
 
 const ProductsPage = () => {
   const {
-    filteredProducts,
+    text,
     color,
     company,
     category,
@@ -166,6 +166,7 @@ const ProductsPage = () => {
     minPrice,
     maxPrice,
     isShippingFree,
+    filteredProducts,
   } = useSelector((store) => store.filters);
 
   const dispatch = useDispatch();
@@ -256,6 +257,7 @@ const ProductsPage = () => {
       <Links home={true} products={"visible"} />
       <div className="flex [@media(max-width:800px)]:flex-col gap-[30px] max-w-[1350px] mx-auto mt-14 p-2 px-[85px] lg:px-5 md:px-3">
         <Filters
+          text={text}
           colors={colors}
           color={color}
           companies={companies}

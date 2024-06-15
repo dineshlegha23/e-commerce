@@ -8,8 +8,7 @@ const Filters = ({
   categories,
   companies,
   colors,
-  search,
-  setSearch,
+  text,
   category,
   company,
   color,
@@ -23,8 +22,14 @@ const Filters = ({
       <div className="flex flex-col gap-[14px] ">
         <form>
           <input
-            value={search}
-            onChange={(e) => setSearch(e.target.value.toLocaleLowerCase())}
+            name="text"
+            value={text}
+            onChange={(e) =>
+              updateFilterValues(
+                e.target.name,
+                e.target.value.toLocaleLowerCase()
+              )
+            }
             type="text"
             className="bg-[#f1f5f9] w-[190px] py-[6px] px-2 rounded-md tracking-wider font-medium placeholder:text-black/50"
             placeholder="Search"

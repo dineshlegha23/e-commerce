@@ -60,9 +60,13 @@ export const filtersSlice = createSlice({
       } else {
         state[action.payload.name] = action.payload.value;
       }
-      const { company, color, category, isShippingFree, price } = state;
+      const { text, company, color, category, isShippingFree, price } = state;
 
       let temp = [...state.allProducts];
+
+      if (text) {
+        temp = temp.filter((product) => product?.name?.startsWith(text));
+      }
 
       if (category !== "all") {
         temp = temp.filter((product) => product.category === category);
