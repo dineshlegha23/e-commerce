@@ -17,15 +17,15 @@ const initialState = {
   minPrice: 0,
   maxPrice: 0,
   isShippingFree: false,
+  sort: "price-lowest",
 };
-console.log(initialState.isShipping);
 
 export const filtersSlice = createSlice({
   name: "filters",
   initialState,
   reducers: {
     addAllProducts: (state, action) => {
-      state.allProducts = action.payload;
+      state.allProducts = action.payload.sort((a, b) => a.price - b.price);
       state.filteredProducts =
         state.filteredProducts.length > 0
           ? state.filteredProducts
@@ -93,7 +93,7 @@ export const filtersSlice = createSlice({
       state.filteredProducts = temp;
     },
 
-    clearFilters: (state, action) => {
+    clearFilters: (state) => {
       state.filteredProducts = state.allProducts;
       state.color = "all";
       state.category = "all";
@@ -102,9 +102,37 @@ export const filtersSlice = createSlice({
       state.text = "";
       state.isShippingFree = false;
     },
+
+    updateSort: (state, action) => {
+      state.sort = action.payload;
+
+      if (action.payload === "price-lowest") {
+        state.filteredProducts = state.filteredProducts.sort(
+          (a, b) => a.price - b.price
+        );
+      }
+
+      if (action.payload === "price-highest") {
+        state.filteredProducts = state.filteredProducts.sort(
+          (a, b) => b.price - a.price
+        );
+      }
+
+      if (action.payload === "a-z") {
+        state.filteredProducts = state.filteredProducts.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+      }
+
+      if (action.payload === "z-a") {
+        state.filteredProducts = state.filteredProducts.sort((a, b) =>
+          b.name.localeCompare(a.name)
+        );
+      }
+    },
   },
 });
 
-export const { addAllProducts, updateFilters, clearFilters } =
+export const { addAllProducts, updateFilters, clearFilters, updateSort } =
   filtersSlice.actions;
 export default filtersSlice.reducer;

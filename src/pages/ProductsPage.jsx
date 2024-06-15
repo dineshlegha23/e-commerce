@@ -151,7 +151,7 @@ import { products_url } from "../utils/constants";
 import Filters from "../components/Filters";
 import ProductList from "../components/ProductList";
 import { addAllProducts } from "../store/filtersSlice";
-import { updateFilters, clearFilters } from "../store/filtersSlice";
+import { updateFilters, clearFilters, updateSort } from "../store/filtersSlice";
 
 const ProductsPage = () => {
   const {
@@ -166,6 +166,7 @@ const ProductsPage = () => {
     minPrice,
     maxPrice,
     isShippingFree,
+    sort,
     filteredProducts,
   } = useSelector((store) => store.filters);
 
@@ -173,7 +174,6 @@ const ProductsPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [search, setSearch] = useState("");
-  const [sort, setSort] = useState("lowest");
 
   const fetchData = async () => {
     try {
@@ -240,6 +240,10 @@ const ProductsPage = () => {
   //   }
   // }, [search, category, company, color, price, isShippingFree, sort]);
 
+  const sortHandler = (type) => {
+    dispatch(updateSort(type));
+  };
+
   if (error) {
     return <Error />;
   }
@@ -276,7 +280,7 @@ const ProductsPage = () => {
         <ProductList
           filteredProducts={filteredProducts}
           sort={sort}
-          setSort={setSort}
+          updateSort={sortHandler}
         />
       </div>
     </section>

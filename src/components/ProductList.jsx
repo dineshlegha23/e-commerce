@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import GridView from "./GridView";
 import ListView from "./ListView";
-import Links from "./Links";
 
-const ProductList = ({ filteredProducts, setSort, sort }) => {
+const ProductList = ({ filteredProducts, updateSort, sort }) => {
   const [isGridView, setIsGridView] = useState(true);
 
   return (
@@ -48,13 +47,13 @@ const ProductList = ({ filteredProducts, setSort, sort }) => {
           <p>Sort By</p>
           <select
             value={sort}
-            onChange={(e) => setSort(e.target.value)}
+            onChange={(e) => updateSort(e.target.value)}
             name="sort"
             id="sort"
             className="pr-1 text-[17px]"
           >
-            <option value="lowest">Price (Lowest)</option>
-            <option value="highest">Price (Highest)</option>
+            <option value="price-lowest">Price (Lowest)</option>
+            <option value="price-highest">Price (Highest)</option>
             <option value="a-z">Name (A-Z)</option>
             <option value="z-a">Name (Z-A)</option>
           </select>
