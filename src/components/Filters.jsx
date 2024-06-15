@@ -4,33 +4,20 @@ import { FaCheck } from "react-icons/fa";
 
 const Filters = ({
   updateFilterValues,
+  clearFilters,
   categories,
   companies,
   colors,
   search,
   setSearch,
   category,
-  // setCategory,
   company,
-  // setCompany,
   color,
-  // setColor,
   minPrice,
   maxPrice,
   price,
-  // setPrice,
   isShippingFree,
-  setIsShippingFree,
 }) => {
-  function handleClear() {
-    setSearch("");
-    setCategory("all");
-    setCompany("all");
-    setColor("all");
-    setPrice(309999);
-    setIsShippingFree(false);
-  }
-
   return (
     <article className="w-[234px] px-1 h-fit sticky [@media(max-width:800px)]:relative top-4 bottom-0">
       <div className="flex flex-col gap-[14px] ">
@@ -139,7 +126,9 @@ const Filters = ({
               min={minPrice}
               max={maxPrice}
               value={price}
-              onChange={(e) => setPrice(e.target.value)}
+              onChange={(e) =>
+                updateFilterValues(e.target.name, Number(e.target.value))
+              }
             />
           </div>
         </div>
@@ -147,15 +136,16 @@ const Filters = ({
           <h5 className="text-black/70 my-2">Free Shipping</h5>
           <input
             type="checkbox"
-            name="freeShipping"
-            id="freeShipping"
-            checked={isShippingFree}
-            onChange={() => setIsShippingFree(!isShippingFree)}
+            name="isShippingFree"
+            id="isShippingFree"
+            checked={Boolean(isShippingFree)}
+            value={Boolean(isShippingFree)}
+            onChange={(e) => updateFilterValues(e.target.name, e.target.value)}
           />
         </div>
       </div>
       <button
-        onClick={handleClear}
+        onClick={clearFilters}
         className="text-sm px-[8px] py-[2px] mt-2 tracking-widest bg-[#bb2525] text-white rounded-md"
       >
         Clear Filters

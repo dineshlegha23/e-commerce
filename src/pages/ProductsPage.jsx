@@ -146,16 +146,14 @@ import Links from "../components/Links";
 import { useDispatch, useSelector } from "react-redux";
 import { Loading } from "../components";
 import Error from "../components/Error";
-import { addProducts } from "../store/productsSlice";
+// import { addProducts } from "../store/productsSlice";
 import { products_url } from "../utils/constants";
 import Filters from "../components/Filters";
 import ProductList from "../components/ProductList";
 import { addAllProducts } from "../store/filtersSlice";
-import { updateFilters } from "../store/filtersSlice";
+import { updateFilters, clearFilters } from "../store/filtersSlice";
 
 const ProductsPage = () => {
-  const { allProducts } = useSelector((store) => store.products);
-
   const {
     filteredProducts,
     color,
@@ -164,40 +162,23 @@ const ProductsPage = () => {
     companies,
     colors,
     categories,
+    price,
     minPrice,
     maxPrice,
+    isShippingFree,
   } = useSelector((store) => store.filters);
-
-  console.log(color, company, category);
 
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  // const [filteredProducts, setFilteredProducts] = useState(allProducts);
   const [search, setSearch] = useState("");
-  // const [category, setCategory] = useState("all");
-  // const [company, setCompany] = useState("all");
-  // const [color, setColor] = useState("all");
-  const [price, setPrice] = useState(309999);
-  const [isShippingFree, setIsShippingFree] = useState(false);
   const [sort, setSort] = useState("lowest");
-
-  // const categories = [
-  //   ...new Set(allProducts.map((product) => product.category)),
-  // ];
-
-  // const companies = [...new Set(allProducts.map((product) => product.company))];
-
-  // const colors = [
-  //   ...new Set([...allProducts.map((product) => product.colors)].flat()),
-  // ];
 
   const fetchData = async () => {
     try {
       setLoading(true);
       const response = await fetch(products_url);
       const data = await response.json();
-      dispatch(addProducts(data));
       dispatch(addAllProducts(data));
       setLoading(false);
     } catch (error) {
@@ -208,8 +189,12 @@ const ProductsPage = () => {
   };
 
   useEffect(() => {
-    allProducts.length > 0 || fetchData();
+    fetchData();
   }, []);
+
+  const clearAllFilters = () => {
+    dispatch(clearFilters());
+  };
 
   // useEffect(() => {
   //   setFilteredProducts(
@@ -272,19 +257,19 @@ const ProductsPage = () => {
       <div className="flex [@media(max-width:800px)]:flex-col gap-[30px] max-w-[1350px] mx-auto mt-14 p-2 px-[85px] lg:px-5 md:px-3">
         <Filters
           colors={colors}
+          color={color}
           companies={companies}
           categories={categories}
           category={category}
           company={company}
-          updateFilterValues={updateFilterValues}
           minPrice={minPrice}
           maxPrice={maxPrice}
           price={price}
           search={search}
           setSearch={setSearch}
           isShippingFree={isShippingFree}
-          setIsShippingFree={setIsShippingFree}
-          filteredProducts={filteredProducts}
+          updateFilterValues={updateFilterValues}
+          clearFilters={clearAllFilters}
         />
         <ProductList
           filteredProducts={filteredProducts}
