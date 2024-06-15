@@ -193,6 +193,10 @@ const ProductsPage = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    dispatch(updateSort(sort));
+  }, [filteredProducts]);
+
   const clearAllFilters = () => {
     dispatch(clearFilters());
   };

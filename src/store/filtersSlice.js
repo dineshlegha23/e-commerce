@@ -101,6 +101,7 @@ export const filtersSlice = createSlice({
       state.price = state.maxPrice;
       state.text = "";
       state.isShippingFree = false;
+      state.sort = "price-lowest";
     },
 
     updateSort: (state, action) => {
