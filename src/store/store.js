@@ -10,7 +10,6 @@ import cartReducer, {
   setCartAmount,
   clearCart,
 } from "./cartSlice";
-
 import filtersReducer from "./filtersSlice";
 
 const localStorageMiddleware = createListenerMiddleware();

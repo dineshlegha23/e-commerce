@@ -1,10 +1,14 @@
 import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const CartButtons = () => {
   const { cartItems } = useSelector((store) => store.cart);
+  const { loginWithRedirect, user, logout } = useAuth0();
+  console.log(user);
+
   return (
     <div className="flex gap-10 p-3">
       <Link
@@ -17,10 +21,23 @@ const CartButtons = () => {
           {cartItems?.length}
         </p>
       </Link>
-      <div className="flex text-2xl items-center gap-2">
-        <p>Login</p>
-        <FaUserPlus />
-      </div>
+      {user ? (
+        <button
+          onClick={() => logout()}
+          className="flex text-2xl items-center gap-2"
+        >
+          <p>Logout</p>
+          <FaUserMinus />
+        </button>
+      ) : (
+        <button
+          onClick={() => loginWithRedirect()}
+          className="flex text-2xl items-center gap-2"
+        >
+          <p>Login</p>
+          <FaUserPlus />
+        </button>
+      )}
     </div>
   );
 };
