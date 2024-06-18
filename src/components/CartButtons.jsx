@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeUser, setUser } from "../store/authSlice";
 import { Link } from "react-router-dom";
 
 const CartButtons = () => {
+  const dispatch = useDispatch();
   const { cartItems } = useSelector((store) => store.cart);
-  const { loginWithRedirect, user, logout } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, user, logout } = useAuth0();
   console.log(user);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      dispatch(setUser(true));
+    } else {
+      dispatch(removeUser());
+    }
+  }, [isAuthenticated]);
 
   return (
     <div className="flex gap-10 p-3">

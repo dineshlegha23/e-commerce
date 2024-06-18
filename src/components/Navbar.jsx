@@ -5,10 +5,13 @@ import { ImCross } from "react-icons/im";
 import { Link } from "react-router-dom";
 import { links } from "../utils/constants";
 import { CartButtons } from "../components";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const { myUser } = useSelector((store) => store.auth);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  console.log(myUser);
   return (
     <nav className="flex justify-between items-center max-w-[1350px] mx-auto py-4 px-[90px] xs:px-5 lg:px-5">
       <Link to={"/"}>
@@ -52,6 +55,13 @@ const Navbar = () => {
               </p>
             </Link>
           ))}
+          {myUser && (
+            <Link to={"/checkout"} onClick={() => setIsSidebarOpen(false)}>
+              <p className="capitalize py-4 pl-5 border-b-2 border-transparent hover:bg-blue-100 hover:pl-8 transition-all tracking-wider">
+                Checkout
+              </p>
+            </Link>
+          )}
         </ul>
         <div
           onClick={() => setIsSidebarOpen(false)}
@@ -69,6 +79,13 @@ const Navbar = () => {
             </p>
           </Link>
         ))}
+        {myUser && (
+          <Link to="/checkout">
+            <p className="capitalize py-2 border-b-2 border-transparent hover:border-b-2 hover:border-red-300 tracking-wider">
+              Checkout
+            </p>
+          </Link>
+        )}
       </ul>
       <div
         onClick={() => setIsSidebarOpen(true)}

@@ -11,6 +11,7 @@ import cartReducer, {
   clearCart,
 } from "./cartSlice";
 import filtersReducer from "./filtersSlice";
+import authSlice from "./authSlice";
 
 const localStorageMiddleware = createListenerMiddleware();
 
@@ -28,6 +29,7 @@ export const store = configureStore({
     products: productsReducer,
     cart: cartReducer,
     filters: filtersReducer,
+    auth: authSlice,
   },
 
   middleware: (getDefaultMiddleware) =>

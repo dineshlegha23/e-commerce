@@ -1,8 +1,10 @@
 import React from "react";
 import { fixedPrice, formatPrice } from "../utils/helpers";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const CartTotals = ({ subtotal, shipping = 534 }) => {
+  const { myUser } = useSelector((store) => store.auth);
   let total = subtotal + shipping;
 
   return (
@@ -25,9 +27,18 @@ const CartTotals = ({ subtotal, shipping = 534 }) => {
               <span>{formatPrice(total)}</span>
             </div>
           </div>
-          <button className="bg-brown text-white/80 tracking-widest py-1 rounded-md">
-            LOGIN
-          </button>
+          {myUser ? (
+            <Link
+              to={"/checkout"}
+              className="w-full text-center bg-brown text-white/100 tracking-widest py-1 rounded-md"
+            >
+              Checkout
+            </Link>
+          ) : (
+            <button className="bg-brown text-white/80 tracking-widest py-1 rounded-md">
+              LOGIN
+            </button>
+          )}
         </div>
       </div>
     </section>

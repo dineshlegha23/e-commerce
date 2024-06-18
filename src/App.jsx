@@ -5,7 +5,7 @@ import {
   HomePage,
   AboutPage,
   CartPage,
-  // CheckoutPage,
+  CheckoutPage,
   ErrorPage,
   ProductsPage,
   SingleProductPage,
@@ -22,6 +22,7 @@ const App = () => {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/products/:productId" element={<SingleProductPage />} />
           <Route path="/products" element={<ProductsPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />
