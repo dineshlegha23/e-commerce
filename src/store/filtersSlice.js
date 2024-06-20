@@ -25,7 +25,7 @@ export const filtersSlice = createSlice({
   initialState,
   reducers: {
     addAllProducts: (state, action) => {
-      state.allProducts = action.payload.sort((a, b) => a.price - b.price);
+      state.allProducts = [...action.payload].sort((a, b) => a.price - b.price);
       state.filteredProducts =
         state.filteredProducts.length > 0
           ? state.filteredProducts

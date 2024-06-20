@@ -1,37 +1,26 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Links from "../components/Links";
 import { Link, useParams } from "react-router-dom";
-import { single_product_url } from "../utils/constants";
 import { Loading, ProductImages, Stars, AddToCart } from "../components/";
 import { formatPrice } from "../utils/helpers";
 import { TiTick } from "react-icons/ti";
+import { useFetchSingleProductQuery } from "../store/api/productsApiSlice";
 
 const SingleProductPage = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [product, setProduct] = useState();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentColor, setCurrentColor] = useState();
   const [amount, setAmount] = useState(1);
   const { productId } = useParams();
 
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch(`${single_product_url}${productId}`);
-      const data = await response.json();
-      setProduct(data);
-      setLoading(false);
-      setCurrentColor(data.colors[0]);
-    } catch (error) {
-      setLoading(false);
-      setError(true);
-    }
-  };
+  const {
+    data: product,
+    isLoading: loading,
+    error,
+  } = useFetchSingleProductQuery(productId);
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    product && setCurrentColor(product?.colors[0]);
+  }, [product]);
 
   if (loading) {
     return <Loading />;

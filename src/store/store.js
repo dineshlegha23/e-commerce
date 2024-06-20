@@ -12,6 +12,7 @@ import cartReducer, {
 } from "./cartSlice";
 import filtersReducer from "./filtersSlice";
 import authSlice from "./authSlice";
+import { productsApiSlice } from "./api/productsApiSlice";
 
 const localStorageMiddleware = createListenerMiddleware();
 
@@ -26,6 +27,7 @@ localStorageMiddleware.startListening({
 
 export const store = configureStore({
   reducer: {
+    [productsApiSlice.reducerPath]: productsApiSlice.reducer,
     products: productsReducer,
     cart: cartReducer,
     filters: filtersReducer,
@@ -33,5 +35,7 @@ export const store = configureStore({
   },
 
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().prepend(localStorageMiddleware.middleware),
+    getDefaultMiddleware()
+      .concat(productsApiSlice.middleware)
+      .prepend(localStorageMiddleware.middleware),
 });

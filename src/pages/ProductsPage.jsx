@@ -152,6 +152,7 @@ import Filters from "../components/Filters";
 import ProductList from "../components/ProductList";
 import { addAllProducts } from "../store/filtersSlice";
 import { updateFilters, clearFilters, updateSort } from "../store/filtersSlice";
+import { useFetchProductsQuery } from "../store/api/productsApiSlice";
 
 const ProductsPage = () => {
   const {
@@ -170,28 +171,14 @@ const ProductsPage = () => {
     filteredProducts,
   } = useSelector((store) => store.filters);
 
-  const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
   const [search, setSearch] = useState("");
+  const dispatch = useDispatch();
 
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch(products_url);
-      const data = await response.json();
-      dispatch(addAllProducts(data));
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      setError(true);
-      console.log(error);
-    }
-  };
+  const { data, error, isLoading: loading } = useFetchProductsQuery();
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    data?.length > 0 && dispatch(addAllProducts(data));
+  }, [data]);
 
   useEffect(() => {
     dispatch(updateSort(sort));
@@ -200,49 +187,6 @@ const ProductsPage = () => {
   const clearAllFilters = () => {
     dispatch(clearFilters());
   };
-
-  // useEffect(() => {
-  //   setFilteredProducts(
-  //     allProducts
-  //       .filter((product) => product?.name?.startsWith(search))
-  //       .filter((product) =>
-  //         category === "all" ? true : product?.category?.startsWith(category)
-  //       )
-  //       .filter((product) =>
-  //         company === "all" ? true : product?.company?.startsWith(company)
-  //       )
-  //       .filter((product) => product.price <= price)
-  //       .filter((product) =>
-  //         isShippingFree ? product?.shipping === true : true
-  //       )
-  //       .filter((product) =>
-  //         color === "all"
-  //           ? true
-  //           : product?.colors?.some((currentColor) => currentColor === color)
-  //       )
-  //   );
-
-  //   if (sort === "lowest") {
-  //     setFilteredProducts((products) =>
-  //       [...products].sort((a, b) => a.price - b.price)
-  //     );
-  //   }
-  //   if (sort === "highest") {
-  //     setFilteredProducts((products) =>
-  //       [...products].sort((a, b) => b.price - a.price)
-  //     );
-  //   }
-  //   if (sort === "a-z") {
-  //     setFilteredProducts((products) =>
-  //       [...products].sort((a, b) => a.name.localeCompare(b.name))
-  //     );
-  //   }
-  //   if (sort === "z-a") {
-  //     setFilteredProducts((products) =>
-  //       [...products].sort((a, b) => b.name.localeCompare(a.name))
-  //     );
-  //   }
-  // }, [search, category, company, color, price, isShippingFree, sort]);
 
   const sortHandler = (type) => {
     dispatch(updateSort(type));
