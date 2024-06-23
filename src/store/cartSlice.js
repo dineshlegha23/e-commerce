@@ -17,7 +17,13 @@ export const cartSlice = createSlice({
 
       if (isItemPresent) {
         isItemPresent.name = name;
-        isItemPresent.amount = amount;
+
+        if (isItemPresent.amount + amount > stock) {
+          isItemPresent.amount = stock;
+        } else {
+          isItemPresent.amount += amount;
+        }
+
         isItemPresent.color = color;
         isItemPresent.price = price;
         isItemPresent.stock = stock;
