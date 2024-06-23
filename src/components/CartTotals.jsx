@@ -1,12 +1,10 @@
 import React from "react";
-import { fixedPrice, formatPrice } from "../utils/helpers";
+import { formatPrice } from "../utils/helpers";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const CartTotals = ({ subtotal, shipping = 534 }) => {
   const { user } = useAuth0();
-  // const { myUser } = useSelector((store) => store.auth);
   let total = subtotal + shipping;
 
   return (

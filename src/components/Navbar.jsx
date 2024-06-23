@@ -11,7 +11,6 @@ const Navbar = () => {
   const { myUser } = useSelector((store) => store.auth);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  console.log(myUser);
   return (
     <nav className="flex justify-between items-center max-w-[1350px] mx-auto py-4 px-[90px] xs:px-5 lg:px-5">
       <Link to={"/"}>

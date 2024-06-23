@@ -9,7 +9,6 @@ const CartButtons = () => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((store) => store.cart);
   const { isAuthenticated, loginWithRedirect, user, logout } = useAuth0();
-  console.log(user);
 
   useEffect(() => {
     if (isAuthenticated) {
