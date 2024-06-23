@@ -18,8 +18,6 @@ const SingleProductPage = () => {
     error,
   } = useFetchSingleProductQuery(productId);
 
-  console.log(product);
-
   useEffect(() => {
     product && setCurrentColor(product?.colors[0]);
   }, [product]);
