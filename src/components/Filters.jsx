@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { getUniqueValues, formatPrice } from "../utils/helpers";
+import React from "react";
+import { formatPrice } from "../utils/helpers";
 import { FaCheck } from "react-icons/fa";
 
 const Filters = ({
