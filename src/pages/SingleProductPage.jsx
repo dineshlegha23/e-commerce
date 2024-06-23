@@ -18,6 +18,8 @@ const SingleProductPage = () => {
     error,
   } = useFetchSingleProductQuery(productId);
 
+  console.log(product);
+
   useEffect(() => {
     product && setCurrentColor(product?.colors[0]);
   }, [product]);
@@ -63,9 +65,9 @@ const SingleProductPage = () => {
             <h1 className="text-[39px] text-black/80 font-bold capitalize -mt-5 tracking-wider">
               {product?.name}
             </h1>
-            <Stars />
+            <Stars stars={product?.stars} reviews={product?.reviews} />
             <p className="text-brown text-xl tracking-widest font-bold mt-1">
-              ${formatPrice(product?.price)}
+              {formatPrice(product?.price)}
             </p>
             <p className="max-w-[555px] text-black/80 text-wider text-base leading-8">
               {product?.description}
